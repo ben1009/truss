@@ -14,6 +14,7 @@ import (
 
 	"github.com/go-kit/kit/endpoint"
 	grpctransport "github.com/go-kit/kit/transport/grpc"
+	"github.com/gogo/protobuf/types"
 
 	// This Service
 	"{{.ImportPath -}} /svc"
@@ -39,6 +40,7 @@ func New(conn *grpc.ClientConn, options ...ClientOption) (pb.{{.Service.Name}}Se
 	{{- with $te := .}}
 		{{- with $pkgName := $te.PackageName}}
 			{{- range $i := $te.Service.Methods}}
+    		    {{if ne .ResponseType.Name "Empty" }}
 				var {{ToLower $i.Name}}Endpoint endpoint.Endpoint
 				{
 					{{ToLower $i.Name}}Endpoint = grpctransport.NewClient(
@@ -51,6 +53,20 @@ func New(conn *grpc.ClientConn, options ...ClientOption) (pb.{{.Service.Name}}Se
 						clientOptions...,
 					).Endpoint()
 				}
+				{{else}}
+                var {{ToLower $i.Name}}Endpoint endpoint.Endpoint
+				{
+					{{ToLower $i.Name}}Endpoint = grpctransport.NewClient(
+						conn,
+						"{{$pkgName}}.{{$te.Service.Name}}",
+						"{{$i.Name}}",
+						EncodeGRPC{{$i.Name}}Request,
+						DecodeGRPC{{$i.Name}}Response,
+						types.{{GoName $i.ResponseType.Name}}{},
+						clientOptions...,
+					).Endpoint()
+				}
+				{{end}}
 			{{end}}
 		{{end}}
 	{{end}}
@@ -66,10 +82,17 @@ func New(conn *grpc.ClientConn, options ...ClientOption) (pb.{{.Service.Name}}Se
 {{range $i := .Service.Methods}}
 // DecodeGRPC{{$i.Name}}Response is a transport/grpc.DecodeResponseFunc that converts a
 // gRPC {{ToLower $i.Name}} reply to a user-domain {{ToLower $i.Name}} response. Primarily useful in a client.
-func DecodeGRPC{{$i.Name}}Response(_ context.Context, grpcReply interface{}) (interface{}, error) {
-	reply := grpcReply.(*pb.{{GoName $i.ResponseType.Name}})
-	return reply, nil
-}
+    {{if ne .ResponseType.Name "Empty" }}
+    func DecodeGRPC{{$i.Name}}Response(_ context.Context, grpcReply interface{}) (interface{}, error) {
+        reply := grpcReply.(*pb.{{GoName $i.ResponseType.Name}})
+        return reply, nil
+    }
+    {{else}}
+    func DecodeGRPC{{$i.Name}}Response(_ context.Context, grpcReply interface{}) (interface{}, error) {
+        reply := grpcReply.(*types.{{GoName $i.ResponseType.Name}})
+        return reply, nil
+    }
+   	{{end}}
 {{end}}
 
 // GRPC Client Encode

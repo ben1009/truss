@@ -9,8 +9,8 @@ const HandlerMethods = `
 					return &resp, nil
 				}
 			{{else}}
-				func (s {{ToLower $te.ServiceName}}Service) {{.Name}}(ctx context.Context, in *pb.{{GoName .RequestType.Name}})error{
-					return  nil
+				func (s {{ToLower $te.ServiceName}}Service) {{.Name}}(ctx context.Context, in *pb.{{GoName .RequestType.Name}})(*types.{{GoName $i.ResponseType.Name}}, error){
+					return new(types.Empty), nil
 				}
 			{{end}}		
 		{{end}}
@@ -23,6 +23,7 @@ package handlers
 import (
 	"context"
 
+	"github.com/gogo/protobuf/types"
 	pb "{{.PBImportPath -}}"
 )
 
@@ -36,8 +37,8 @@ type {{ToLower .Service.Name}}Service struct{}
 {{with $te := . }}
 	{{range $i := $te.Service.Methods}}
 		{{if eq  $i.ResponseType.Name "Empty" }}
-			func (s {{ToLower $te.Service.Name}}Service) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) error{
-				return nil
+			func (s {{ToLower $te.Service.Name}}Service) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) (*types.{{GoName $i.ResponseType.Name}}, error){
+				return new(types.Empty), nil
 			}
 		{{else}}
 			func (s {{ToLower $te.Service.Name}}Service) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) (*pb.{{GoName $i.ResponseType.Name}}, error){
