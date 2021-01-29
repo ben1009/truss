@@ -5,7 +5,7 @@
 syntax = "proto3";
 
 // The package name determines the name of the directories that truss creates
-// for `package echo;` truss will create the directory "echo-service".
+// for `package echo;` truss will create the directory "echoservice".
 package echo;
 
 import "github.com/metaverse/truss/deftree/googlethirdparty/annotations.proto";

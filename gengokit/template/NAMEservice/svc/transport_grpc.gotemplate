@@ -15,6 +15,7 @@ import (
 	"google.golang.org/grpc/metadata"
 
 	grpctransport "github.com/go-kit/kit/transport/grpc"
+	"github.com/gogo/protobuf/types"
 
 	// This Service
 	pb "{{.PBImportPath -}}"
@@ -48,13 +49,23 @@ type grpcServer struct {
 
 // Methods for grpcServer to implement {{GoName .Service.Name}}Server interface
 {{range $i := .Service.Methods}}
-func (s *grpcServer) {{GoName $i.Name}}(ctx context.Context, req *pb.{{GoName $i.RequestType.Name}}) (*pb.{{GoName $i.ResponseType.Name}}, error) {
-	_, rep, err := s.{{ToLower $i.Name}}.ServeGRPC(ctx, req)
-	if err != nil {
-		return nil, err
-	}
-	return rep.(*pb.{{GoName $i.ResponseType.Name}}), nil
-}
+    {{if ne .ResponseType.Name "Empty" }}
+    func (s *grpcServer) {{GoName $i.Name}}(ctx context.Context, req *pb.{{GoName $i.RequestType.Name}}) (*pb.{{GoName $i.ResponseType.Name}}, error) {
+        _, rep, err := s.{{ToLower $i.Name}}.ServeGRPC(ctx, req)
+        if err != nil {
+            return nil, err
+        }
+        return rep.(*pb.{{GoName $i.ResponseType.Name}}), nil
+    }
+    {{else}}
+    func (s *grpcServer) {{GoName $i.Name}}(ctx context.Context, req *pb.{{GoName $i.RequestType.Name}}) (*types.{{GoName $i.ResponseType.Name}}, error) {
+        _, rep, err := s.{{ToLower $i.Name}}.ServeGRPC(ctx, req)
+        if err != nil {
+            return nil, err
+        }
+        return rep.(*types.{{GoName $i.ResponseType.Name}}), nil
+    }
+    {{end}}
 {{end}}
 
 // Server Decode
@@ -71,10 +82,17 @@ func DecodeGRPC{{$i.Name}}Request(_ context.Context, grpcReq interface{}) (inter
 {{range $i := .Service.Methods}}
 // EncodeGRPC{{$i.Name}}Response is a transport/grpc.EncodeResponseFunc that converts a
 // user-domain {{ToLower $i.Name}} response to a gRPC {{ToLower $i.Name}} reply. Primarily useful in a server.
-func EncodeGRPC{{$i.Name}}Response(_ context.Context, response interface{}) (interface{}, error) {
-	resp := response.(*pb.{{GoName $i.ResponseType.Name}})
-	return resp, nil
-}
+    {{if ne .ResponseType.Name "Empty" }}
+    func EncodeGRPC{{$i.Name}}Response(_ context.Context, response interface{}) (interface{}, error) {
+        resp := response.(*pb.{{GoName $i.ResponseType.Name}})
+        return resp, nil
+    }
+    {{else}}
+    func EncodeGRPC{{$i.Name}}Response(_ context.Context, response interface{}) (interface{}, error) {
+        resp := response.(*types.{{GoName $i.ResponseType.Name}})
+        return resp, nil
+    }
+	{{end}}
 {{end}}
 
 // Helpers

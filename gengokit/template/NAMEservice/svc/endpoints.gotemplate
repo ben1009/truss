@@ -15,6 +15,7 @@ import (
 	"context"
 
 	"github.com/go-kit/kit/endpoint"
+	"github.com/gogo/protobuf/types"
 
 	pb "{{.PBImportPath -}}"
 )
@@ -40,13 +41,23 @@ type Endpoints struct {
 
 // Endpoints
 {{range $i := .Service.Methods}}
+    {{if ne .ResponseType.Name "Empty" }}
 	func (e Endpoints) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) (*pb.{{GoName $i.ResponseType.Name}}, error) {
+	    response, err := e.{{$i.Name}}Endpoint(ctx, in)
+    	if err != nil {
+    		return nil, err
+    	}
+    	return response.(*pb.{{GoName $i.ResponseType.Name}}), nil
+	}
+    {{else}}
+	func (e Endpoints) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) (*types.{{GoName $i.ResponseType.Name}}, error) {
 		response, err := e.{{$i.Name}}Endpoint(ctx, in)
 		if err != nil {
 			return nil, err
 		}
-		return response.(*pb.{{GoName $i.ResponseType.Name}}), nil
+		return response.(*types.{{GoName $i.ResponseType.Name}}), nil
 	}
+    {{end}}
 {{end}}
 
 // Make Endpoints

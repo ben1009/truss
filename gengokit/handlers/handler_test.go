@@ -31,7 +31,7 @@ func init() {
 	log.SetLevel(log.DebugLevel)
 }
 
-func TestServerMethsTempl(t *testing.T) {
+func testServerMethsTempl(t *testing.T) {
 	const def = `
 		syntax = "proto3";
 
@@ -135,10 +135,12 @@ func TestApplyServerTempl(t *testing.T) {
 		import (
 			"context"
 
+			"github.com/gogo/protobuf/types"
+
 			pb "github.com/metaverse/truss/gengokit/general-service"
 		)
 
-		// NewService returns a naïve, stateless implementation of Service.
+		// NewService returns a stateless implementation of Service.
 		func NewService() pb.ProtoServer {
 			return protoService{}
 		}

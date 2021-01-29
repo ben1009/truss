@@ -55,7 +55,7 @@ brews:
       EOS
       system "#{bin}/truss", "proto3.proto"
       assert_predicate testpath/"proto3.pb.go", :exist?
-      assert_predicate testpath/echo-service, :exist?
+      assert_predicate testpath/echoservice, :exist?
       refute_predicate (testpath/"proto3.pb.go").size, :zero?
 
     # Custom install script for brew.
