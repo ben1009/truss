@@ -24,6 +24,7 @@ import (
 	"context"
 
 	"github.com/gogo/protobuf/types"
+
 	pb "{{.PBImportPath -}}"
 )
 
