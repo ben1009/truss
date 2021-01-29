@@ -23,14 +23,14 @@ truss: gobindata
 	go install -ldflags '-X "main.version=$(SHA)" -X "main.date=$(VERSION_DATE)"' github.com/metaverse/truss/cmd/truss
 
 # Run the go tests and the truss integration tests
-test: test-go test-integration
+test: test-go #test-integration
 
 test-go:
 	#GO111MODULE=on go test -v ./... -covermode=atomic -coverprofile=./coverage.out --coverpkg=./...
 	GO111MODULE=on go test -v ./...
 
-test-integration:
-	GO111MODULE=on $(MAKE) -C cmd/_integration-tests
+#test-integration:
+#	GO111MODULE=on $(MAKE) -C cmd/_integration-tests
 
 # Removes generated code from tests
 testclean:
