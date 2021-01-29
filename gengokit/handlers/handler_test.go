@@ -135,6 +135,8 @@ func TestApplyServerTempl(t *testing.T) {
 		import (
 			"context"
 
+			"github.com/gogo/protobuf/types"
+
 			pb "github.com/metaverse/truss/gengokit/general-service"
 		)
 
