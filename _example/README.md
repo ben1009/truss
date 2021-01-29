@@ -1,6 +1,6 @@
 # \_example
 
-`echo.proto` is the service definition for `echo-service`.
+`echo.proto` is the service definition for `echoservice`.
 Try generating it with:
 
 ```

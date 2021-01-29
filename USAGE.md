@@ -7,5 +7,5 @@
 
  Truss will enforce that exported functions in `handlers/handlers.go` conform to the rpc interface defined in the service *.proto files. All other exported functions will be removed upon next re-run of truss.
 
-2. DO NOT create files or directories in `NAME-service/`
- All user logic must exist outside of `NAME-service/`, leaving organization of that logic up to the user.
+2. DO NOT create files or directories in `NAMEservice/`
+ All user logic must exist outside of `NAMEservice/`, leaving organization of that logic up to the user.

@@ -26,7 +26,7 @@ import (
 )
 
 var (
-	svcPackageFlag = flag.String("svcout", "", "Go package path where the generated Go service will be written. Trailing slash will create a NAME-service directory")
+	svcPackageFlag = flag.String("svcout", "", "Go package path where the generated Go service will be written. Trailing slash will create a NAMEservice directory")
 	verboseFlag    = flag.BoolP("verbose", "v", false, "Verbose output")
 	helpFlag       = flag.BoolP("help", "h", false, "Print usage")
 	getStartedFlag = flag.BoolP("getstarted", "", false, "Output a 'getstarted.proto' protobuf file in ./")
@@ -175,7 +175,7 @@ func parseInput() (*truss.Config, error) {
 
 	svcName = strings.ToLower(svcName)
 
-	svcDirName := svcName + "-service"
+	svcDirName := svcName + "service"
 	log.WithField("svcDirName", svcDirName).Debug()
 
 	svcPath := filepath.Join(filepath.Dir(cfg.DefPaths[0]), svcDirName)

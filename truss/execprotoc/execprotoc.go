@@ -23,6 +23,8 @@ func GeneratePBDotGo(protoPaths, gopath []string, outDir string) error {
 		"Mgoogle/protobuf/struct.proto=github.com/gogo/protobuf/types," +
 		"Mgoogle/protobuf/timestamp.proto=github.com/gogo/protobuf/types," +
 		"Mgoogle/protobuf/wrappers.proto=github.com/gogo/protobuf/types," +
+		"Mgoogle/protobuf/empty.proto=github.com/gogo/protobuf/types,"+
+		"Mgoogle/api/annotations.proto=github.com/gogo/googleapis/google/api,"+
 		"paths=source_relative,plugins=grpc:" + outDir
 
 	_, err := exec.LookPath("protoc-gen-gogo")

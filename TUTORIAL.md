@@ -68,7 +68,7 @@ In your terminal, go to the folder containing echo.proto and run `truss *.proto`
 
 ```
 .
-├── echo-service
+├── echoservice
 |   ├── cmd
 |   │   └── echo
 |   │       └── main.go
@@ -81,7 +81,7 @@ In your terminal, go to the folder containing echo.proto and run `truss *.proto`
 |       └── ...
 └── echo.proto
 ```
-From the top down, within `echo-service/`:
+From the top down, within `echoservice/`:
   - `svc/` contains the wiring and encoding protocols necessary for service communication (generated code)
   - `handlers/handlers.go` is populated with stubs where you will add the business logic
   - `cmd/echo/` contains the service main, which you will build and run shortly
@@ -118,8 +118,8 @@ func (s echoService) Echo(ctx context.Context, in *pb.EchoRequest) (*pb.EchoResp
 ## Build/Run the client and server executables
 
 From the directory containing echo.proto run
-`go build echo-service/echo` and
-`go build echo-service/echo`
+`go build echoservice/echo` and
+`go build echoservice/echo`
 
 Create another terminal window to run the server in, navigate to the same directory and launch the server:
 `./echo`
@@ -151,7 +151,7 @@ The following is left as an exercise to the reader:
     - now separate this logic into an unexported helper function
   - Define a new RPC call in echo.proto
     - regenerate service with truss, check that your old logic remains
-    - implement the logic for your new call in a separate package, place it ouside of echo-service
+    - implement the logic for your new call in a separate package, place it ouside of echoservice
     - wire in the new logic by importing the package in the `handlers.go`
   Suggestion: Save everything the service hears and echo all of it back. See repeated types (protobuf), package variables and init() function (golang).
   - Remove an RPC call definition from echo.proto
@@ -166,7 +166,7 @@ The following is left as an exercise to the reader:
 
 You can control the location of the output folders for your service by specifying the following flags when running truss
 ```
-  --svcout {go-style-package-path to where you want the contents of {Name}-service folder to be}
+  --svcout {go-style-package-path to where you want the contents of {Name}service folder to be}
 ```
 
 Note: “go-style-package-path” means exactly the style you use in your golang import statements, relative to your $GOPATH.

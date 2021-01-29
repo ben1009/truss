@@ -30,9 +30,9 @@ func init() {
 
 func TestTemplatePathToActual(t *testing.T) {
 	pathToWants := map[string]string{
-		"NAME-service/":                "package-service/",
-		"NAME-service/test.gotemplate": "package-service/test.go",
-		"NAME-service/NAME":            "package-service/package",
+		"NAMEservice/":                "package-service/",
+		"NAMEservice/test.gotemplate": "package-service/test.go",
+		"NAMEservice/NAME":            "package-service/package",
 	}
 
 	for path, want := range pathToWants {
@@ -214,7 +214,7 @@ func TestAllTemplates(t *testing.T) {
 
 	conf := gengokit.Config{
 		GoPackage: "github.com/metaverse/truss/gengokit",
-		PBPackage: "github.com/metaverse/truss/gengokit/general-service",
+		PBPackage: "github.com/metaverse/truss/gengokit/generalservice",
 	}
 
 	data1, err := gengokit.NewData(sd1, conf)

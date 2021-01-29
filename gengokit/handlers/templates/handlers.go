@@ -35,10 +35,16 @@ type {{ToLower .Service.Name}}Service struct{}
 
 {{with $te := . }}
 	{{range $i := $te.Service.Methods}}
-		func (s {{ToLower $te.Service.Name}}Service) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) (*pb.{{GoName $i.ResponseType.Name}}, error){
-			var resp pb.{{GoName $i.ResponseType.Name}}
-			return &resp, nil
-		}
+		{{if eq  $i.ResponseType.Name "Empty" }}
+			func (s {{ToLower $te.Service.Name}}Service) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) error{
+				return nil
+			}
+		{{else}}
+			func (s {{ToLower $te.Service.Name}}Service) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) (*pb.{{GoName $i.ResponseType.Name}}, error){
+				var resp pb.{{GoName $i.ResponseType.Name}}
+				return &resp, nil
+			}
+		{{end}}
 	{{end}}
 {{- end}}
 `
