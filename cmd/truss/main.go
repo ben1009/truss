@@ -150,7 +150,7 @@ func parseInput() (*truss.Config, error) {
 	}
 	log.WithField("DefPaths", cfg.DefPaths).Debug()
 
-	protoDir := filepath.Dir(cfg.DefPaths[0])
+	protoDir := filepath.Dir(cfg.DefPaths[0]) //+ "/pb"
 	p, err := packages.Load(nil, protoDir)
 	if err != nil || len(p) == 0 {
 		return nil, errors.Wrap(err, "proto files not found in importable go package")
@@ -158,6 +158,12 @@ func parseInput() (*truss.Config, error) {
 
 	cfg.PBPackage = p[0].PkgPath
 	cfg.PBPath = protoDir
+	//if _, err := os.Stat(cfg.PBPath); os.IsNotExist(err) {
+	//	err = os.Mkdir(cfg.PBPath, os.ModePerm)
+	//	if err != nil {
+	//		return nil, errors.Wrap(err, "cannot create .pb.go files")
+	//	}
+	//}
 	log.WithField("PB Package", cfg.PBPackage).Debug()
 	log.WithField("PB Path", cfg.PBPath).Debug()
 
@@ -201,7 +207,6 @@ func parseInput() (*truss.Config, error) {
 	}
 
 	log.WithField("svcPath", svcPath).Debug()
-
 	// Create svcPath for the case that it does not exist
 	err = os.MkdirAll(svcPath, 0777)
 	if err != nil {

@@ -29,7 +29,7 @@ func GenerateGokit(sd *svcdef.Svcdef, conf gengokit.Config) (map[string]io.Reade
 
 	codeGenFiles := make(map[string]io.Reader)
 
-	// Remove the suffix "-service" since it's added back in by templatePathToActual
+	// Remove the suffix "service" since it's added back in by templatePathToActual
 	svcname := strings.ToLower(sd.Service.Name)
 	for _, templPath := range templFiles.AssetNames() {
 		// Re-derive the actual path for this file based on the service output
@@ -102,7 +102,7 @@ func generateResponseFile(templFP string, data *gengokit.Data, prevFile io.Reade
 // disk
 func templatePathToActual(templFilePath, svcName string) string {
 	// Switch "NAME" in path with svcName.
-	// i.e. for svcName = addsvc; /NAME -> /addsvc-service/addsvc
+	// i.e. for svcName = addsvc; /NAME -> /addsvcservice/addsvc
 	actual := strings.Replace(templFilePath, "NAME", svcName, -1)
 
 	actual = strings.TrimSuffix(actual, "template")

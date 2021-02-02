@@ -171,7 +171,7 @@ You can control the location of the output folders for your service by specifyin
 
 Note: “go-style-package-path” means exactly the style you use in your golang import statements, relative to your $GOPATH.
 
-Executing this command will place the *.pb.go files into `$GOPATH/truss-demo/interface-defs/`, and the entire echo-service contents (excepting the *.pb.go files) to `$GOPATH/truss-demo/service/`.
+Executing this command will place the *.pb.go files into `$GOPATH/truss-demo/interface-defs/`, and the entire echoservice contents (excepting the *.pb.go files) to `$GOPATH/truss-demo/service/`.
 
 ## Middlewares
 
