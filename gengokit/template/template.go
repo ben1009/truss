@@ -329,16 +329,16 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"cmd/NAME/main.gotemplate": cmdNameMainGotemplate,
-	"handlers/handlers.gotemplate": handlersHandlersGotemplate,
-	"handlers/hooks.gotemplate": handlersHooksGotemplate,
-	"handlers/middlewares.gotemplate": handlersMiddlewaresGotemplate,
+	"cmd/NAME/main.gotemplate":          cmdNameMainGotemplate,
+	"handlers/handlers.gotemplate":      handlersHandlersGotemplate,
+	"handlers/hooks.gotemplate":         handlersHooksGotemplate,
+	"handlers/middlewares.gotemplate":   handlersMiddlewaresGotemplate,
 	"svc/client/grpc/client.gotemplate": svcClientGrpcClientGotemplate,
 	"svc/client/http/client.gotemplate": svcClientHttpClientGotemplate,
-	"svc/endpoints.gotemplate": svcEndpointsGotemplate,
-	"svc/server/run.gotemplate": svcServerRunGotemplate,
-	"svc/transport_grpc.gotemplate": svcTransport_grpcGotemplate,
-	"svc/transport_http.gotemplate": svcTransport_httpGotemplate,
+	"svc/endpoints.gotemplate":          svcEndpointsGotemplate,
+	"svc/server/run.gotemplate":         svcServerRunGotemplate,
+	"svc/transport_grpc.gotemplate":     svcTransport_grpcGotemplate,
+	"svc/transport_http.gotemplate":     svcTransport_httpGotemplate,
 }
 
 // AssetDir returns the file names below a certain
@@ -380,6 +380,7 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
+
 var _bintree = &bintree{nil, map[string]*bintree{
 	"cmd": &bintree{nil, map[string]*bintree{
 		"NAME": &bintree{nil, map[string]*bintree{
@@ -387,8 +388,8 @@ var _bintree = &bintree{nil, map[string]*bintree{
 		}},
 	}},
 	"handlers": &bintree{nil, map[string]*bintree{
-		"handlers.gotemplate": &bintree{handlersHandlersGotemplate, map[string]*bintree{}},
-		"hooks.gotemplate": &bintree{handlersHooksGotemplate, map[string]*bintree{}},
+		"handlers.gotemplate":    &bintree{handlersHandlersGotemplate, map[string]*bintree{}},
+		"hooks.gotemplate":       &bintree{handlersHooksGotemplate, map[string]*bintree{}},
 		"middlewares.gotemplate": &bintree{handlersMiddlewaresGotemplate, map[string]*bintree{}},
 	}},
 	"svc": &bintree{nil, map[string]*bintree{
@@ -455,4 +456,3 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
-

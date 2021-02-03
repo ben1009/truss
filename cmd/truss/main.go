@@ -25,9 +25,9 @@ import (
 )
 
 var (
-	serviceNameFlag = flag.String("serviceName", "", "The serviceName when created")
+	serviceNameFlag = flag.String("servicename", "", "The serviceName need created")
 	createFlag      = flag.BoolP("create", "c", false, "Initialize a new service with the input serviceName")
-	updateFlag      = flag.BoolP("update", "u", false, "Update the service created before")
+	updateFlag      = flag.BoolP("update", "u", false, "Update the service created before, run the command at the xxxservice folder")
 	verboseFlag     = flag.BoolP("verbose", "v", false, "Verbose output")
 	helpFlag        = flag.BoolP("help", "h", false, "Print usage")
 )
@@ -161,7 +161,7 @@ func genProto(cfg *truss.Config, svcName string) error {
 
 	err = getstarted.Gen(svcName, pbPath)
 	if err != nil {
-		return errors.Wrap(err, "genProto.Gen")
+		return errors.Wrap(err, "getstarted.Gen")
 	}
 
 	cfg.DefPaths = []string{fmt.Sprintf("%s/%s.proto", pbPath, svcName)}
@@ -215,10 +215,11 @@ func findProtoFiles(root string) ([]string, error) {
 	}
 	return protoFiles, nil
 }
+
 func parseUpdateInput(cfg *truss.Config) error {
 	err := getProto(cfg)
 	if err != nil {
-		return errors.Wrap(err, "parseUpdateInput.getProto")
+		return errors.Wrap(err, "getProto")
 	}
 
 	err = setCfg(cfg)

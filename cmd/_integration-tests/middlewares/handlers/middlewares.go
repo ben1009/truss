@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"context"
+
 	"github.com/go-kit/kit/endpoint"
 
 	svc "github.com/metaverse/truss/cmd/_integration-tests/middlewares/middlewarestest-service/svc"
