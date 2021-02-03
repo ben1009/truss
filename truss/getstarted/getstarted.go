@@ -3,12 +3,13 @@ package getstarted
 import (
 	"bytes"
 	"os"
+	"path"
 	"strings"
 	"text/template"
 
-	log "github.com/sirupsen/logrus"
 	gogen "github.com/gogo/protobuf/protoc-gen-gogo/generator"
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 )
 
 type protoInfo struct {
@@ -35,53 +36,33 @@ func (p protoInfo) ServiceName() string {
 	return gogen.CamelCase(a)
 }
 
-// Do writes a default protobuf file to the current directory, in a file named
-// based on the 'pkg' param, defaulting to "getstarted.proto" if pkg is empty.
-// If the file exists, Do prints a warning and returns a non-zero exit code.
-// The non-zero exit code is to enable using the return from this function in
-// os.Exit().
-func Do(pkg string) int {
-	const fallbackFName = "get_started"
-	if pkg == "" {
-		pkg = fallbackFName
-	}
+// Gen create a proto in the targetPath path with the given serviceName
+func Gen(pkg, targetPath string) error {
 	pkg = removeDotProtoSuffix(pkg)
 	pinfo := protoInfo{
 		alias: pkg,
 	}
-	if _, err := os.Stat(pinfo.FileName()); err == nil {
-		existingFile, err := renderTemplate("existingFileMsg", existingFileMsg, pinfo)
-		if err != nil {
-			log.Error(err)
-			return 1
-		}
-		log.Error(string(existingFile))
-		return 1
-	}
-	f, err := os.Create(pinfo.FileName())
+	file := path.Join(targetPath, pinfo.FileName())
+	log.WithField("proto file Path", file).Debug()
+	f, err := os.Create(file)
 	if err != nil {
 		log.Error(errors.Wrapf(err, "cannot create %q", pinfo.FileName()))
-		return 1
+		return errors.Wrap(err, "Gen.Create")
 	}
 
 	code, err := renderTemplate(pinfo.FileName(), starterProto, pinfo)
 	if err != nil {
 		log.Error(err)
-		return 1
+		return errors.Wrap(err, "Gen.renderTemplate")
 	}
 
 	_, err = f.Write(code)
 	if err != nil {
 		log.Error(errors.Wrapf(err, "cannot write default contents to %q", pinfo.FileName()))
-		return 1
+		return errors.Wrap(err, "Gen.Write")
 	}
-	nextStep, err := renderTemplate("nextStepMsg", nextStepMsg, pinfo)
-	if err != nil {
-		log.Error(err)
-		return 1
-	}
-	log.Info(string(nextStep))
-	return 0
+
+	return nil
 }
 
 // removeDotProtoSuffix exists to preempt and warn a user who enters a name
