@@ -8,7 +8,7 @@ import (
 	"github.com/metaverse/truss/gengokit/handlers/templates"
 )
 
-const HookPath = "handlers/hooks.gotemplate"
+const HookPath = "svc/handlers/hooks.gotemplate"
 
 // NewHook returns a new HookRender
 func NewHook(prev io.Reader) gengokit.Renderable {

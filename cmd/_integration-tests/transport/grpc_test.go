@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"context"
+
 	"google.golang.org/grpc"
 
 	pb "github.com/metaverse/truss/cmd/_integration-tests/transport/proto"

@@ -5,8 +5,9 @@ package handlers
 
 import (
 	"context"
-	"github.com/pkg/errors"
 	"net/http"
+
+	"github.com/pkg/errors"
 
 	pb "github.com/metaverse/truss/cmd/_integration-tests/transport/proto"
 )

@@ -8,8 +8,8 @@ import (
 	"io/ioutil"
 	"strings"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 
 	"github.com/metaverse/truss/gengokit"
 	"github.com/metaverse/truss/gengokit/handlers"
@@ -29,7 +29,7 @@ func GenerateGokit(sd *svcdef.Svcdef, conf gengokit.Config) (map[string]io.Reade
 
 	codeGenFiles := make(map[string]io.Reader)
 
-	// Remove the suffix "-service" since it's added back in by templatePathToActual
+	// Remove the suffix "service" since it's added back in by templatePathToActual
 	svcname := strings.ToLower(sd.Service.Name)
 	for _, templPath := range templFiles.AssetNames() {
 		// Re-derive the actual path for this file based on the service output
@@ -101,11 +101,11 @@ func generateResponseFile(templFP string, data *gengokit.Data, prevFile io.Reade
 // service and returns what the relative file path of what should be written to
 // disk
 func templatePathToActual(templFilePath, svcName string) string {
-	// Switch "NAME" in path with svcName.
-	// i.e. for svcName = addsvc; /NAME -> /addsvc-service/addsvc
-	actual := strings.Replace(templFilePath, "NAME", svcName, -1)
+	// Switch "server" in path with svcName.
+	// i.e. for svcName = addsvc; /server -> /addsvcservice/addsvc
+	//actual := strings.Replace(templFilePath, "server", svcName, -1)
 
-	actual = strings.TrimSuffix(actual, "template")
+	actual := strings.TrimSuffix(templFilePath, "template")
 
 	return actual
 }

@@ -14,8 +14,9 @@ We will build a simple service based on [echo.proto](./_example/echo.proto)
 
 # Writing your first service
 
-Define the communication interface for your service in the *.proto file(s).
-Let's start with [echo.proto](./_example/echo.proto) and read the helpful comments.
+`truss -c serviceName`
+
+will create a new service with the default proto
 
 ## What is in the *.proto file definitions?
 
@@ -64,28 +65,35 @@ The service definition can be split across multiple proto files. However, it is 
 
 ## Understanding generated file structures
 
-In your terminal, go to the folder containing echo.proto and run `truss *.proto` command. This will generate the service folder (by default at the same level as the proto files). The command will succeed silently. Your directory will now look like this:
+In your terminal, go to the root folder run `truss -c serviceName` command. This will generate the service folder (by default at the same level as the command running against). The command will succeed silently, or with `truss -v` will output a debug log. Your directory will now look like this:
 
 ```
 .
 ├── echoservice
+|   ├── client
+|   │   ├── gprc
+|   │   └── http
 |   ├── cmd
-|   │   └── echo
+|   │   └── server
 |   │       └── main.go
-|   ├── echo.pb.go
-|   ├── handlers
-|   │   ├── handlers.go
-|   │   ├── hooks.go
-|   │   └── middlewares.go
-|   └── svc
-|       └── ...
-└── echo.proto
+|   ├──pb
+|   │   ├── echo.pb.go
+|   │   ├── echo.proto
+|   ├──svc
+|   │   └── handlers
+|   │       ├── handlers.go
+|   │       └── hooks.go
+|   ├── endpoints.go
+|   ├── serve.go
+|   ├── transport_grpc.go
+|   └── transport_http.go
+
 ```
 From the top down, within `echoservice/`:
   - `svc/` contains the wiring and encoding protocols necessary for service communication (generated code)
   - `handlers/handlers.go` is populated with stubs where you will add the business logic
-  - `cmd/echo/` contains the service main, which you will build and run shortly
-  - `echo.pb.go` contains the RPC interface definitions and supporting structures that have been translated from `echo.proto` to golang
+  - `cmd/server/` contains the service main, which you will build and run shortly
+  - `pb/echo.pb.go` contains the RPC interface definitions and supporting structures that have been translated from `pb/echo.proto` to golang
 
 If you try to build and run your service now, it will respond with empty messages. There is no business logic yet! We shall add it in the next step.
 
@@ -150,7 +158,7 @@ The following is left as an exercise to the reader:
     - code the logic inside the stub
     - now separate this logic into an unexported helper function
   - Define a new RPC call in echo.proto
-    - regenerate service with truss, check that your old logic remains
+    - regenerate service with `truss -u` running at the service folder, check that your old logic remains
     - implement the logic for your new call in a separate package, place it ouside of echoservice
     - wire in the new logic by importing the package in the `handlers.go`
   Suggestion: Save everything the service hears and echo all of it back. See repeated types (protobuf), package variables and init() function (golang).
@@ -160,19 +168,4 @@ The following is left as an exercise to the reader:
   - Launch the server on a different port, or different machine, and talk to it (hint: run `./server_main -h`)
   - Try running multiple servers at once
 
-# Additional features
 
-## File placement
-
-You can control the location of the output folders for your service by specifying the following flags when running truss
-```
-  --svcout {go-style-package-path to where you want the contents of {Name}service folder to be}
-```
-
-Note: “go-style-package-path” means exactly the style you use in your golang import statements, relative to your $GOPATH.
-
-Executing this command will place the *.pb.go files into `$GOPATH/truss-demo/interface-defs/`, and the entire echo-service contents (excepting the *.pb.go files) to `$GOPATH/truss-demo/service/`.
-
-## Middlewares
-
- TODO

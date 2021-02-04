@@ -3,7 +3,7 @@
 // Version: {{.Version}}
 // Version Date: {{.VersionDate}}
 
-package server
+package svc
 
 import (
         "flag"
@@ -19,8 +19,7 @@ import (
 
 	// This Service
 	pb "{{.PBImportPath -}}"
-	"{{.ImportPath -}} /svc"
-	"{{.ImportPath -}} /handlers"
+	"{{.ImportPath -}} /svc/handlers"
 )
 
 var DefaultConfig Config
@@ -52,34 +51,34 @@ type Config struct {
 	GRPCAddr string
 }
 
-func NewEndpoints(service pb.{{.Service.Name}}Server) svc.Endpoints {
+func NewEndpoints(service pb.{{.Service.Name}}Server) Endpoints {
 	// Business domain.
 
 	// Wrap Service with middlewares. See handlers/middlewares.go
-	service = handlers.WrapService(service)
+	//service = handlers.WrapService(service)
 
 	// Endpoint domain.
 	var (
 	{{range $i := .Service.Methods -}}
-		{{ToLower $i.Name}}Endpoint = svc.Make{{$i.Name}}Endpoint(service)
+		{{ToLower $i.Name}}Endpoint = Make{{$i.Name}}Endpoint(service)
 	{{end}}
 	)
 
-	endpoints := svc.Endpoints{
+	endpoints := Endpoints{
 	{{range $i := .Service.Methods -}}
 		{{$i.Name}}Endpoint:    {{ToLower $i.Name}}Endpoint,
 	{{end}}
 	}
 
 	// Wrap selected Endpoints with middlewares. See handlers/middlewares.go
-	endpoints = handlers.WrapEndpoints(endpoints)
+	//endpoints = handlers.WrapEndpoints(endpoints)
 
 	return endpoints
 }
 
-// Run starts a new http server, gRPC server, and a debug server with the
+// Serve starts a new http server, gRPC server, and a debug server with the
 // passed config and logger
-func Run(cfg Config) {
+func Serve(cfg Config) {
 	service := handlers.NewService()
 	endpoints := NewEndpoints(service)
 
@@ -106,7 +105,7 @@ func Run(cfg Config) {
 	// HTTP transport.
 	go func() {
 		log.Println("transport", "HTTP", "addr", cfg.HTTPAddr)
-		h := svc.MakeHTTPHandler(endpoints)
+		h := MakeHTTPHandler(endpoints)
 		errc <- http.ListenAndServe(cfg.HTTPAddr, h)
 	}()
 
@@ -119,7 +118,7 @@ func Run(cfg Config) {
 			return
 		}
 
-		srv := svc.MakeGRPCServer(endpoints)
+		srv := MakeGRPCServer(endpoints)
 		s := grpc.NewServer()
 		pb.Register{{.Service.Name}}Server(s, srv)
 

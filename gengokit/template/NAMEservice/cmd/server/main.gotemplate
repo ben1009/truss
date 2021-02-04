@@ -9,12 +9,12 @@ import (
 	"flag"
 
 	// This Service
-	"{{.ImportPath -}} /svc/server"
+	"{{.ImportPath -}} /svc"
 )
 
 func main() {
 	// Update addresses if they have been overwritten by flags
 	flag.Parse()
 
-	server.Run(server.DefaultConfig)
+	svc.Serve(svc.DefaultConfig)
 }
