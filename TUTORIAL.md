@@ -14,7 +14,7 @@ We will build a simple service based on [echo.proto](./_example/echo.proto)
 
 # Writing your first service
 
-`truss -c serviceName`
+`truss -c --servicename serviceName`
 
 will create a new service with the default proto
 
@@ -65,7 +65,7 @@ The service definition can be split across multiple proto files. However, it is 
 
 ## Understanding generated file structures
 
-In your terminal, go to the root folder run `truss -c serviceName` command. This will generate the service folder (by default at the same level as the command running against). The command will succeed silently, or with `truss -v` will output a debug log. Your directory will now look like this:
+In your terminal, go to the root folder run `truss -c --servicename serviceName` command. This will generate the service folder (by default at the same level as the command running against). The command will succeed silently, or with `truss -v` will output a debug log. Your directory will now look like this:
 
 ```
 .

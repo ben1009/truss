@@ -46,7 +46,7 @@ add you business logic, and you're good to go.
 Try Truss for yourself on Echo Service to see the service that is generated:
 ```
 for creating new service
-truss -c serviceName 
+truss -c --servicename serviceName 
 ```
 
 See [USAGE.md](./USAGE.md) and [TUTORIAL.md](./TUTORIAL.md) for more details.
