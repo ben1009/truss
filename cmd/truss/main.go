@@ -27,7 +27,7 @@ import (
 var (
 	serviceNameFlag = flag.String("servicename", "", "The serviceName need created")
 	createFlag      = flag.BoolP("create", "c", false, "Initialize a new service with the input serviceName")
-	updateFlag      = flag.BoolP("update", "u", false, "Update the service created before, run the command at the xxxservice folder")
+	updateFlag      = flag.BoolP("update", "u", false, "Update the service created before, run the command at the <serviceName> folder")
 	verboseFlag     = flag.BoolP("verbose", "v", false, "Verbose output")
 	helpFlag        = flag.BoolP("help", "h", false, "Print usage")
 )

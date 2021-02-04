@@ -101,11 +101,11 @@ func generateResponseFile(templFP string, data *gengokit.Data, prevFile io.Reade
 // service and returns what the relative file path of what should be written to
 // disk
 func templatePathToActual(templFilePath, svcName string) string {
-	// Switch "NAME" in path with svcName.
-	// i.e. for svcName = addsvc; /NAME -> /addsvcservice/addsvc
-	actual := strings.Replace(templFilePath, "NAME", svcName, -1)
+	// Switch "server" in path with svcName.
+	// i.e. for svcName = addsvc; /server -> /addsvcservice/addsvc
+	//actual := strings.Replace(templFilePath, "server", svcName, -1)
 
-	actual = strings.TrimSuffix(actual, "template")
+	actual := strings.TrimSuffix(templFilePath, "template")
 
 	return actual
 }

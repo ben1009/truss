@@ -10,7 +10,7 @@ import (
 )
 
 // MiddlewaresPath is the path to the middleware gotemplate file.
-const MiddlewaresPath = "handlers/middlewares.gotemplate"
+const MiddlewaresPath = "svc/handlers/middlewares.gotemplate"
 
 // NewMiddlewares returns a Renderable that renders the middlewares.go file.
 func NewMiddlewares() *Middlewares {
