@@ -43,12 +43,10 @@ for HTTP 1.1/JSON transport!
 Then you open the `handlers/handlers.go`,
 add you business logic, and you're good to go.
 
-Here is an example service definition: [Echo Service](./_example/echo.proto)
-
 Try Truss for yourself on Echo Service to see the service that is generated:
-
 ```
-truss _example/echo.proto
+for creating new service
+truss -c serviceName 
 ```
 
 See [USAGE.md](./USAGE.md) and [TUTORIAL.md](./TUTORIAL.md) for more details.

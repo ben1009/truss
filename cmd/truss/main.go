@@ -146,6 +146,7 @@ func run(cmd *exec.Cmd) {
 func genProto(cfg *truss.Config, svcName string) error {
 	outPath, _ := os.Getwd()
 	svcPath := path.Join(outPath, svcName)
+	// TODO: check if exist
 	err := os.MkdirAll(svcPath, 0755)
 	if err != nil {
 		return errors.Wrapf(err, "cannot create svcPath directory: %s", svcPath)
@@ -413,6 +414,9 @@ func readPreviousGeneration(serviceDir string) (map[string]io.Reader, error) {
 	}
 
 	const handlersDirName = "handlers"
+	// add svc dir to addFileToFiles walkable path, since move handlers dir inside svc
+	const svcDirName = "svc"
+
 	files := make(map[string]io.Reader)
 
 	addFileToFiles := func(path string, info os.FileInfo, err error) error {
@@ -421,13 +425,12 @@ func readPreviousGeneration(serviceDir string) (map[string]io.Reader, error) {
 			// Only files within the handlers dir are used to
 			// support regeneration.
 			// See `gengokit/generator/gen.go:generateResponseFile`
-			case filepath.Base(serviceDir), handlersDirName:
+			case filepath.Base(serviceDir), handlersDirName, svcDirName:
 				return nil
 			default:
 				return filepath.SkipDir
 			}
 		}
-
 		file, ioErr := os.Open(path)
 		if ioErr != nil {
 			return errors.Wrapf(ioErr, "cannot read file: %v", path)
