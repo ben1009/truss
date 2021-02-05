@@ -158,7 +158,7 @@ func genProto(cfg *truss.Config, svcName string) error {
 		return errors.Errorf("dir:%s already exist, either change to a different serviceName or update instead", svcPath)
 	}
 
-	err := os.MkdirAll(svcPath, 0o755)
+	err := os.MkdirAll(svcPath, 0755)
 	if err != nil {
 		return errors.Wrapf(err, "cannot create svcPath directory: %s", svcPath)
 	}
@@ -166,7 +166,7 @@ func genProto(cfg *truss.Config, svcName string) error {
 	log.WithField("Service Path", cfg.ServicePath).Debug()
 
 	pbPath := path.Join(svcPath, "pb")
-	err = os.MkdirAll(pbPath, 0o755)
+	err = os.MkdirAll(pbPath, 0755)
 	if err != nil {
 		return errors.Wrapf(err, "cannot create pbPath directory: %s", pbPath)
 	}
@@ -302,7 +302,7 @@ func parseServiceDefinition(cfg *truss.Config) (*svcdef.Svcdef, error) {
 	protoDefPaths := cfg.DefPaths
 	// Create the ServicePath so the .pb.go files may be place within it
 	if cfg.PrevGen == nil {
-		err := os.MkdirAll(cfg.ServicePath, 0o755)
+		err := os.MkdirAll(cfg.ServicePath, 0755)
 		if err != nil {
 			return nil, errors.Wrap(err, "cannot create service directory")
 		}
@@ -368,7 +368,7 @@ func openFiles(paths []string) (map[string]io.Reader, error) {
 
 // writeGenFile writes a file at path to the filesystem
 func writeGenFile(file io.Reader, path string) error {
-	err := os.MkdirAll(filepath.Dir(path), 0o755)
+	err := os.MkdirAll(filepath.Dir(path), 0755)
 	if err != nil {
 		return err
 	}

@@ -29,8 +29,8 @@
 package gogoproto
 
 import (
-	google_protobuf "github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
 	proto "github.com/gogo/protobuf/proto"
+	google_protobuf "github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
 )
 
 func IsEmbed(field *google_protobuf.FieldDescriptorProto) bool {
