@@ -14,9 +14,9 @@ import (
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/metaverse/truss/gengokit"
-	helper "github.com/metaverse/truss/gengokit/gentesthelper"
-	"github.com/metaverse/truss/svcdef"
+	"github.com/ben1009/truss/gengokit"
+	helper "github.com/ben1009/truss/gengokit/gentesthelper"
+	"github.com/ben1009/truss/svcdef"
 )
 
 var gopath []string
@@ -38,7 +38,7 @@ func testServerMethsTempl(t *testing.T) {
 		// General package
 		package general;
 
-		import "github.com/metaverse/truss/deftree/googlethirdparty/annotations.proto";
+		import "github.com/ben1009/truss/deftree/googlethirdparty/annotations.proto";
 
 		// RequestMessage is so foo
 		message RequestMessage {
@@ -94,7 +94,7 @@ func TestApplyServerTempl(t *testing.T) {
 		// General package
 		package general;
 
-		import "github.com/metaverse/truss/deftree/googlethirdparty/annotations.proto";
+		import "github.com/ben1009/truss/deftree/googlethirdparty/annotations.proto";
 
 		// RequestMessage is so foo
 		message RequestMessage {
@@ -118,8 +118,8 @@ func TestApplyServerTempl(t *testing.T) {
 		}
 	`
 	conf := gengokit.Config{
-		GoPackage: "github.com/metaverse/truss/gengokit/general-service",
-		PBPackage: "github.com/metaverse/truss/gengokit/general-service",
+		GoPackage: "github.com/ben1009/truss/gengokit/general-service",
+		PBPackage: "github.com/ben1009/truss/gengokit/general-service",
 	}
 	sd, err := svcdef.NewFromString(def, gopath)
 	if err != nil {
@@ -137,7 +137,7 @@ func TestApplyServerTempl(t *testing.T) {
 
 			"github.com/gogo/protobuf/types"
 
-			pb "github.com/metaverse/truss/gengokit/general-service"
+			pb "github.com/ben1009/truss/gengokit/general-service"
 		)
 
 		// NewService returns a stateless implementation of Service.
@@ -184,7 +184,7 @@ func TestIsValidFunc(t *testing.T) {
 		// General package
 		package general;
 
-		import "github.com/metaverse/truss/deftree/googlethirdparty/annotations.proto";
+		import "github.com/ben1009/truss/deftree/googlethirdparty/annotations.proto";
 
 		// RequestMessage is so foo
 		message RequestMessage {
@@ -253,7 +253,7 @@ func TestPruneDecls(t *testing.T) {
 		// General package
 		package general;
 
-		import "github.com/metaverse/truss/deftree/googlethirdparty/annotations.proto";
+		import "github.com/ben1009/truss/deftree/googlethirdparty/annotations.proto";
 
 		// RequestMessage is so foo
 		message RequestMessage {
@@ -303,7 +303,7 @@ func TestPruneDecls(t *testing.T) {
 		import (
 			"context"
 
-			pb "github.com/metaverse/truss/gengokit/general-service"
+			pb "github.com/ben1009/truss/gengokit/general-service"
 		)
 
 		// NewService returns a naïve, stateless implementation of Service.
@@ -374,7 +374,7 @@ func TestUpdateMethods(t *testing.T) {
 		// General package
 		package general;
 
-		import "github.com/metaverse/truss/deftree/googlethirdparty/annotations.proto";
+		import "github.com/ben1009/truss/deftree/googlethirdparty/annotations.proto";
 
 		// RequestMessage is so foo
 		message RequestMessage {
@@ -430,8 +430,8 @@ func TestUpdateMethods(t *testing.T) {
 	allMethods := svc.Methods
 
 	conf := gengokit.Config{
-		GoPackage: "github.com/metaverse/truss/gengokit",
-		PBPackage: "github.com/metaverse/truss/gengokit/general-service",
+		GoPackage: "github.com/ben1009/truss/gengokit",
+		PBPackage: "github.com/ben1009/truss/gengokit/general-service",
 	}
 
 	te, err := gengokit.NewData(sd, conf)

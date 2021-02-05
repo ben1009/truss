@@ -1,4 +1,4 @@
-# Truss ![Build Status](https://github.com/metaverse/truss/workflows/Go/badge.svg?branch=master)
+# Truss ![Build Status](https://github.com/ben1009/truss/workflows/Go/badge.svg?branch=master)
 
 Truss handles the painful parts of services, freeing you to focus on the
 business logic.
@@ -19,15 +19,15 @@ Otherwise [install from source.](https://github.com/google/protobuf)
 1. Install Truss with
 
 	```
-	go get -u -d github.com/metaverse/truss
-	cd $GOPATH/src/github.com/metaverse/truss
+	go get -u -d github.com/ben1009/truss
+	cd $GOPATH/src/github.com/ben1009/truss
 	make dependencies
 	make
 	```
 	On Windows, do the following instead:
 	```
-	go get -u -d github.com/metaverse/truss
-	cd %GOPATH%/src/github.com/metaverse/truss
+	go get -u -d github.com/ben1009/truss
+	cd %GOPATH%/src/github.com/ben1009/truss
 	wininstall.bat
 	```
 
@@ -43,7 +43,7 @@ for HTTP 1.1/JSON transport!
 Then you open the `handlers/handlers.go`,
 add you business logic, and you're good to go.
 
-Try Truss for yourself on Echo Service to see the service that is generated:
+Try Truss for yourself to see the service that is generated:
 ```
 for creating new service
 truss -c --servicename serviceName 

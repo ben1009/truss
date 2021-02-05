@@ -11,9 +11,9 @@ import (
 	"io"
 	"strings"
 
-	"github.com/metaverse/truss/gengokit"
-	"github.com/metaverse/truss/gengokit/handlers/templates"
-	"github.com/metaverse/truss/svcdef"
+	"github.com/ben1009/truss/gengokit"
+	"github.com/ben1009/truss/gengokit/handlers/templates"
+	"github.com/ben1009/truss/svcdef"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 )

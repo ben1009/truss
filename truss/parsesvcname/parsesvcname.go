@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/metaverse/truss/svcdef"
-	"github.com/metaverse/truss/truss/execprotoc"
+	"github.com/ben1009/truss/svcdef"
+	"github.com/ben1009/truss/truss/execprotoc"
 	"github.com/pkg/errors"
 )
 
