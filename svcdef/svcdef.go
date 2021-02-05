@@ -421,9 +421,7 @@ func NewServiceMethod(m *ast.Field, info *DebugInfo) (*ServiceMethod, error) {
 	}
 	ft, ok := m.Type.(*ast.FuncType)
 	if !ok {
-		return nil, NewLocationError("provided *ast.Field.Type is not of type "+
-			"*ast.FuncType; cannot proceed",
-			info.Path, info.Position(m.Pos()))
+		return nil, NewLocationError("provided *ast.Field.Type is not of type *ast.FuncType; cannot proceed", info.Path, info.Position(m.Pos()))
 	}
 
 	input := ft.Params.List
@@ -444,9 +442,7 @@ func NewServiceMethod(m *ast.Field, info *DebugInfo) (*ServiceMethod, error) {
 	makeFieldType := func(in *ast.Field) (*FieldType, error) {
 		star, ok := in.Type.(*ast.StarExpr)
 		if !ok {
-			return nil, NewLocationError("cannot create FieldType, in.Type "+
-				"is not *ast.StarExpr",
-				info.Path, info.Position(in.Pos()))
+			return nil, NewLocationError("cannot create FieldType, in.Type is not *ast.StarExpr", info.Path, info.Position(in.Pos()))
 		}
 
 		var name string
@@ -456,9 +452,7 @@ func NewServiceMethod(m *ast.Field, info *DebugInfo) (*ServiceMethod, error) {
 		case *ast.Ident: // FuncName
 			name = fmt.Sprintf("%s", node.Name)
 		default:
-			return nil, NewLocationError("cannot create FieldType, "+
-				"star.Type is not *ast.Ident or *ast.SelectorExpr",
-				info.Path, info.Position(star.Pos()))
+			return nil, NewLocationError("cannot create FieldType, star.Type is not *ast.Ident or *ast.SelectorExpr", info.Path, info.Position(star.Pos()))
 		}
 		return &FieldType{
 			Name:     name,
