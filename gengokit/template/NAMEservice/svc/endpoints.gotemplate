@@ -39,6 +39,14 @@ type Endpoints struct {
 {{- end}}
 }
 
+func NewEndpoints(service pb.{{.Service.Name}}Server) Endpoints {
+	return Endpoints{
+	{{range $i := .Service.Methods -}}
+		{{$i.Name}}Endpoint:    make{{$i.Name}}Endpoint(service),
+	{{end}}
+	}
+}
+
 // Endpoints
 {{range $i := .Service.Methods}}
     {{if ne .ResponseType.Name "Empty" }}
@@ -63,7 +71,7 @@ type Endpoints struct {
 // Make Endpoints
 {{with $te := .}}
 	{{range $i := $te.Service.Methods}}
-		func Make{{$i.Name}}Endpoint(s pb.{{$te.Service.Name}}Server) endpoint.Endpoint {
+		func make{{$i.Name}}Endpoint(s pb.{{$te.Service.Name}}Server) endpoint.Endpoint {
 			return func(ctx context.Context, request interface{}) (response interface{}, err error) {
 				req := request.(*pb.{{GoName $i.RequestType.Name}})
 				v, err := s.{{$i.Name}}(ctx, req)
