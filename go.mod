@@ -1,4 +1,4 @@
-module github.com/metaverse/truss
+module github.com/ben1009/truss/
 
 go 1.13
 

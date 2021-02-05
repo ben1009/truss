@@ -9,8 +9,8 @@ import (
 
 	"google.golang.org/grpc"
 
-	pb "github.com/metaverse/truss/cmd/_integration-tests/transport/proto"
-	grpcclient "github.com/metaverse/truss/cmd/_integration-tests/transport/transportpermutationsservice/svc/client/grpc"
+	pb "github.com/ben1009/truss/cmd/_integration-tests/transport/proto"
+	grpcclient "github.com/ben1009/truss/cmd/_integration-tests/transport/transportpermutationsservice/svc/client/grpc"
 )
 
 var grpcAddr string
