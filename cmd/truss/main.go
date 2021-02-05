@@ -143,10 +143,21 @@ func run(cmd *exec.Cmd) {
 	}
 }
 
+func dirExists(path string) bool {
+	fi, err := os.Stat(path)
+	if err != nil {
+		return false
+	}
+	return fi.Mode().IsDir()
+}
+
 func genProto(cfg *truss.Config, svcName string) error {
 	outPath, _ := os.Getwd()
 	svcPath := path.Join(outPath, svcName)
-	// TODO: check if exist
+	if dirExists(svcPath) {
+		return errors.Errorf("dir:%s already exist, either change to a different serviceName or update instead", svcPath)
+	}
+
 	err := os.MkdirAll(svcPath, 0755)
 	if err != nil {
 		return errors.Wrapf(err, "cannot create svcPath directory: %s", svcPath)
@@ -230,7 +241,7 @@ func parseUpdateInput(cfg *truss.Config) error {
 func parseCreateInput(cfg *truss.Config, svcName string) error {
 	err := genProto(cfg, svcName)
 	if err != nil {
-		return errors.Wrap(err, "getPBPaths")
+		return errors.Wrap(err, "genProto")
 	}
 
 	err = setCfg(cfg)
@@ -283,15 +294,6 @@ func setCfg(cfg *truss.Config) error {
 	// PrevGen
 	cfg.PrevGen, err = readPreviousGeneration(cfg.ServicePath)
 	return errors.Wrap(err, "cannot read previously generated files")
-}
-
-// parseSVCOut handles the difference between relative paths and go package
-// paths
-func parseSVCOut(svcOut string, GOPATH string) (string, error) {
-	if build.IsLocalImport(svcOut) {
-		return filepath.Abs(svcOut)
-	}
-	return filepath.Join(GOPATH, "src", svcOut), nil
 }
 
 // parseServiceDefinition returns a svcdef which contains all necessary
@@ -383,30 +385,6 @@ func writeGenFile(file io.Reader, path string) error {
 	return outFile.Close()
 }
 
-// cleanProtofilePath returns the absolute filepath of a group of files
-// of the files, or an error if the files are not in the same directory
-func cleanProtofilePath(rawPaths []string) ([]string, error) {
-	var fullPaths []string
-
-	// Parsed passed file paths
-	for _, def := range rawPaths {
-		log.WithField("rawDefPath", def).Debug()
-		full, err := filepath.Abs(def)
-		if err != nil {
-			return nil, errors.Wrap(err, "cannot get working directory of truss")
-		}
-		log.WithField("fullDefPath", full)
-
-		fullPaths = append(fullPaths, full)
-
-		if filepath.Dir(fullPaths[0]) != filepath.Dir(full) {
-			return nil, errors.Errorf("passed .proto files in different directories")
-		}
-	}
-
-	return fullPaths, nil
-}
-
 // readPreviousGeneration returns a map[string]io.Reader representing the files in serviceDir
 func readPreviousGeneration(serviceDir string) (map[string]io.Reader, error) {
 	if !fileExists(serviceDir) {
@@ -465,34 +443,6 @@ func fileExists(path string) bool {
 		return true
 	}
 	return false
-}
-
-func cleanupOldFiles(servicePath, serviceName string) {
-	serverCLI := filepath.Join(servicePath, "svc/server/cli")
-	if _, err := os.Stat(serverCLI); err == nil {
-		log.Warnf("Removing stale 'svc/server/cli' files")
-		err := os.RemoveAll(serverCLI)
-		if err != nil {
-			log.Error(err)
-		}
-	}
-	clientCLI := filepath.Join(servicePath, "svc/client/cli")
-	if _, err := os.Stat(clientCLI); err == nil {
-		log.Warnf("Removing stale 'svc/client/cli' files")
-		err := os.RemoveAll(clientCLI)
-		if err != nil {
-			log.Error(err)
-		}
-	}
-
-	oldServer := filepath.Join(servicePath, fmt.Sprintf("cmd/%s-server", serviceName))
-	if _, err := os.Stat(oldServer); err == nil {
-		log.Warnf(fmt.Sprintf("Removing stale 'cmd/%s-server' files, use cmd/%s going forward", serviceName, serviceName))
-		err := os.RemoveAll(oldServer)
-		if err != nil {
-			log.Error(err)
-		}
-	}
 }
 
 // promptNoMake prints that truss was not built with make and prompts the user
