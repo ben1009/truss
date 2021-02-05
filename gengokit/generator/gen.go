@@ -103,7 +103,7 @@ func generateResponseFile(templFP string, data *gengokit.Data, prevFile io.Reade
 func templatePathToActual(templFilePath, svcName string) string {
 	// Switch "server" in path with svcName.
 	// i.e. for svcName = addsvc; /server -> /addsvcservice/addsvc
-	//actual := strings.Replace(templFilePath, "server", svcName, -1)
+	// actual := strings.Replace(templFilePath, "server", svcName, -1)
 
 	actual := strings.TrimSuffix(templFilePath, "template")
 
@@ -125,7 +125,6 @@ func applyTemplateFromPath(templFP string, data *gengokit.Data) (io.Reader, erro
 // the original code is returned.
 func formatCode(code []byte) []byte {
 	formatted, err := format.Source(code)
-
 	if err != nil {
 		log.WithError(err).Warn("Code formatting error, generated service will not build, outputting unformatted code")
 		// return code so at least we get something to examine

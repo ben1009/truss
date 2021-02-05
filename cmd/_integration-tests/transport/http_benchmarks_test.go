@@ -66,7 +66,7 @@ func BenchmarkGetWithQueryClient_NoNetwork(b *testing.B) {
 		// Wrap Service with middlewares. See handlers/service_middlewares.go
 		service = handlers.WrapService(service)
 	}
-	var getwithqueryEndpoint = svc.MakeGetWithQueryEndpoint(service)
+	getwithqueryEndpoint := svc.MakeGetWithQueryEndpoint(service)
 	endpoints := svc.Endpoints{
 		GetWithQueryEndpoint: getwithqueryEndpoint,
 	}

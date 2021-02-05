@@ -103,7 +103,7 @@ func TestNewFile(t *testing.T) {
 
 	msg := ProtoMessage{
 		Fields: []*MessageField{
-			&MessageField{
+			{
 				Label:  "LABEL_OPTIONAL",
 				Number: 1,
 			},
@@ -118,10 +118,10 @@ func TestNewFile(t *testing.T) {
 			&msg,
 		},
 		Services: []*ProtoService{
-			&ProtoService{
+			{
 				FullyQualifiedName: ".example.ExampleService",
 				Methods: []*ServiceMethod{
-					&ServiceMethod{
+					{
 						RequestType:  &msg,
 						ResponseType: &msg,
 					},

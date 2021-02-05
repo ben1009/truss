@@ -194,9 +194,7 @@ func (le LocationError) Location() string {
 	return le.Position
 }
 
-var (
-	oneofs = map[string][]*Field{}
-)
+var oneofs = map[string][]*Field{}
 
 // New creates a Svcdef by parsing the provided Go and Protobuf source files to
 // derive type information, gRPC service data, and HTTP annotations.

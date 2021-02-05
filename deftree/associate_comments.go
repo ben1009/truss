@@ -48,7 +48,6 @@ func protoFieldLabel(proto_tag string) string {
 // in `reflect.Value`) which has the protobuf "field number" corresponding to
 // the `proto_field` parameter.
 func getProtobufField(proto_field int, proto_msg reflect.Value) (reflect.Value, string, error) {
-
 	// Iterate through the fields of the struct, finding the field with the
 	// struct tag indicating that that field correlates to the protobuf field
 	// we're looking for.

@@ -7,7 +7,7 @@ import (
 func TestGetPathParams(t *testing.T) {
 	binding := &MethodHttpBinding{
 		Fields: []*BindingField{
-			&BindingField{
+			{
 				Kind:  "get",
 				Value: `"/{a}/{b}"`,
 			},
@@ -28,17 +28,17 @@ func TestPostBodyParams(t *testing.T) {
 
 	msg := &ProtoMessage{
 		Fields: []*MessageField{
-			&MessageField{
+			{
 				Number: 1,
 				Label:  "LABEL_OPTIONAL",
 				Type:   typ,
 			},
-			&MessageField{
+			{
 				Number: 2,
 				Label:  "LABEL_OPTIONAL",
 				Type:   typ,
 			},
-			&MessageField{
+			{
 				Number: 3,
 				Label:  "LABEL_OPTIONAL",
 				Type:   typ,
@@ -58,24 +58,24 @@ func TestPostBodyParams(t *testing.T) {
 	}
 	md := &MicroserviceDefinition{
 		Files: []*ProtoFile{
-			&ProtoFile{
+			{
 				Messages: []*ProtoMessage{
 					msg,
 				},
 				Services: []*ProtoService{
-					&ProtoService{
+					{
 						Methods: []*ServiceMethod{
-							&ServiceMethod{
+							{
 								RequestType:  msg,
 								ResponseType: msg,
 								HttpBindings: []*MethodHttpBinding{
-									&MethodHttpBinding{
+									{
 										Fields: []*BindingField{
-											&BindingField{
+											{
 												Kind:  "post",
 												Value: `/{A}`,
 											},
-											&BindingField{
+											{
 												Kind:  "body",
 												Value: `B`,
 											},

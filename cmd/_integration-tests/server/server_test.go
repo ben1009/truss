@@ -11,9 +11,8 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
-	"time"
-
 	"testing"
+	"time"
 
 	"github.com/pkg/errors"
 )
@@ -215,7 +214,6 @@ func testEndToEnd(defDir string, subcmd string, t *testing.T, trussOptions ...st
 
 func createTrussService(path string, trussFlags ...string) error {
 	trussOut, err := truss(path, trussFlags...)
-
 	// If truss fails, test error and skip communication
 	if err != nil {
 		return errors.Errorf("Truss generation FAILED - %v\nTruss Output:\n%v Error:\n%v", path, trussOut, err)
@@ -265,7 +263,7 @@ func buildTestService(serviceDir string) (err error) {
 	}
 
 	binDir := serviceDir + "/bin"
-	err = os.MkdirAll(binDir, 0777)
+	err = os.MkdirAll(binDir, 0o777)
 	if err != nil {
 		return err
 	}

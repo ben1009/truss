@@ -198,7 +198,6 @@ func ParseService(lex *SvcLexer) (*Service, error) {
 	// Recursively parse the methods of this service
 	for {
 		rpc, err := ParseMethod(lex)
-
 		if err != nil {
 			return nil, err
 		}
@@ -390,11 +389,9 @@ func ParseMethod(lex *SvcLexer) (*Method, error) {
 	}
 
 	return toret, nil
-
 }
 
 func ParseHttpBindings(lex *SvcLexer) ([]*HTTPBinding, error) {
-
 	rv := make([]*HTTPBinding, 0)
 	new_opt := &HTTPBinding{}
 

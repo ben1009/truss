@@ -11,9 +11,7 @@ import (
 	"github.com/davecgh/go-spew/spew"
 )
 
-var (
-	_ = spew.Sdump
-)
+var _ = spew.Sdump
 
 var gopath []string
 
@@ -59,7 +57,7 @@ func TestNewMethod(t *testing.T) {
 		BasePath:     "/sum/",
 		Verb:         "get",
 		Fields: []*Field{
-			&Field{
+			{
 				Name:                       "A",
 				QueryParamName:             "a",
 				CamelName:                  "A",
@@ -72,7 +70,7 @@ func TestNewMethod(t *testing.T) {
 				TypeConversion:             "ASum",
 				IsBaseType:                 true,
 			},
-			&Field{
+			{
 				Name:                       "B",
 				QueryParamName:             "b",
 				CamelName:                  "B",
@@ -85,7 +83,7 @@ func TestNewMethod(t *testing.T) {
 				TypeConversion:             "BSum",
 				IsBaseType:                 true,
 			},
-			&Field{
+			{
 				Name:                       "OrigName",
 				QueryParamName:             "orig_name",
 				CamelName:                  "OrigName",
@@ -132,7 +130,7 @@ func TestAllFuncSourceCode(t *testing.T) {
 }
 
 func TestEnglishNumber(t *testing.T) {
-	var cases = []struct {
+	cases := []struct {
 		i    int
 		want string
 	}{
@@ -161,7 +159,7 @@ func TestEnglishNumber(t *testing.T) {
 }
 
 func TestLowCamelName(t *testing.T) {
-	var cases = []struct {
+	cases := []struct {
 		name, want string
 	}{
 		{"what", "what"},

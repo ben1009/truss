@@ -14,9 +14,11 @@ import (
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
-var _ = proto.Marshal
-var _ = fmt.Errorf
-var _ = math.Inf
+var (
+	_ = proto.Marshal
+	_ = fmt.Errorf
+	_ = math.Inf
+)
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the proto package it is being compiled against.
@@ -40,9 +42,11 @@ func (*Http) ProtoMessage()    {}
 func (*Http) Descriptor() ([]byte, []int) {
 	return fileDescriptor_http_1fdc2c51640cc709, []int{0}
 }
+
 func (m *Http) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
+
 func (m *Http) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_Http.Marshal(b, m, deterministic)
@@ -55,12 +59,15 @@ func (m *Http) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
+
 func (dst *Http) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_Http.Merge(dst, src)
 }
+
 func (m *Http) XXX_Size() int {
 	return m.Size()
 }
+
 func (m *Http) XXX_DiscardUnknown() {
 	xxx_messageInfo_Http.DiscardUnknown(m)
 }
@@ -309,9 +316,11 @@ func (*HttpRule) ProtoMessage()    {}
 func (*HttpRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_http_1fdc2c51640cc709, []int{1}
 }
+
 func (m *HttpRule) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
+
 func (m *HttpRule) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_HttpRule.Marshal(b, m, deterministic)
@@ -324,12 +333,15 @@ func (m *HttpRule) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
+
 func (dst *HttpRule) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_HttpRule.Merge(dst, src)
 }
+
 func (m *HttpRule) XXX_Size() int {
 	return m.Size()
 }
+
 func (m *HttpRule) XXX_DiscardUnknown() {
 	xxx_messageInfo_HttpRule.DiscardUnknown(m)
 }
@@ -345,18 +357,23 @@ type isHttpRule_Pattern interface {
 type HttpRule_Get struct {
 	Get string `protobuf:"bytes,2,opt,name=get,proto3,oneof"`
 }
+
 type HttpRule_Put struct {
 	Put string `protobuf:"bytes,3,opt,name=put,proto3,oneof"`
 }
+
 type HttpRule_Post struct {
 	Post string `protobuf:"bytes,4,opt,name=post,proto3,oneof"`
 }
+
 type HttpRule_Delete struct {
 	Delete string `protobuf:"bytes,5,opt,name=delete,proto3,oneof"`
 }
+
 type HttpRule_Patch struct {
 	Patch string `protobuf:"bytes,6,opt,name=patch,proto3,oneof"`
 }
+
 type HttpRule_Custom struct {
 	Custom *CustomHttpPattern `protobuf:"bytes,8,opt,name=custom,oneof"`
 }
@@ -582,9 +599,11 @@ func (*CustomHttpPattern) ProtoMessage()    {}
 func (*CustomHttpPattern) Descriptor() ([]byte, []int) {
 	return fileDescriptor_http_1fdc2c51640cc709, []int{2}
 }
+
 func (m *CustomHttpPattern) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
+
 func (m *CustomHttpPattern) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_CustomHttpPattern.Marshal(b, m, deterministic)
@@ -597,12 +616,15 @@ func (m *CustomHttpPattern) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return b[:n], nil
 	}
 }
+
 func (dst *CustomHttpPattern) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_CustomHttpPattern.Merge(dst, src)
 }
+
 func (m *CustomHttpPattern) XXX_Size() int {
 	return m.Size()
 }
+
 func (m *CustomHttpPattern) XXX_DiscardUnknown() {
 	xxx_messageInfo_CustomHttpPattern.DiscardUnknown(m)
 }
@@ -628,6 +650,7 @@ func init() {
 	proto.RegisterType((*HttpRule)(nil), "google.api.HttpRule")
 	proto.RegisterType((*CustomHttpPattern)(nil), "google.api.CustomHttpPattern")
 }
+
 func (m *Http) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -715,6 +738,7 @@ func (m *HttpRule_Get) MarshalTo(dAtA []byte) (int, error) {
 	i += copy(dAtA[i:], m.Get)
 	return i, nil
 }
+
 func (m *HttpRule_Put) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	dAtA[i] = 0x1a
@@ -723,6 +747,7 @@ func (m *HttpRule_Put) MarshalTo(dAtA []byte) (int, error) {
 	i += copy(dAtA[i:], m.Put)
 	return i, nil
 }
+
 func (m *HttpRule_Post) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	dAtA[i] = 0x22
@@ -731,6 +756,7 @@ func (m *HttpRule_Post) MarshalTo(dAtA []byte) (int, error) {
 	i += copy(dAtA[i:], m.Post)
 	return i, nil
 }
+
 func (m *HttpRule_Delete) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	dAtA[i] = 0x2a
@@ -739,6 +765,7 @@ func (m *HttpRule_Delete) MarshalTo(dAtA []byte) (int, error) {
 	i += copy(dAtA[i:], m.Delete)
 	return i, nil
 }
+
 func (m *HttpRule_Patch) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	dAtA[i] = 0x32
@@ -747,6 +774,7 @@ func (m *HttpRule_Patch) MarshalTo(dAtA []byte) (int, error) {
 	i += copy(dAtA[i:], m.Patch)
 	return i, nil
 }
+
 func (m *HttpRule_Custom) MarshalTo(dAtA []byte) (int, error) {
 	i := 0
 	if m.Custom != nil {
@@ -761,6 +789,7 @@ func (m *HttpRule_Custom) MarshalTo(dAtA []byte) (int, error) {
 	}
 	return i, nil
 }
+
 func (m *CustomHttpPattern) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
@@ -800,6 +829,7 @@ func encodeVarintHttp(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return offset + 1
 }
+
 func (m *Http) Size() (n int) {
 	if m == nil {
 		return 0
@@ -851,6 +881,7 @@ func (m *HttpRule_Get) Size() (n int) {
 	n += 1 + l + sovHttp(uint64(l))
 	return n
 }
+
 func (m *HttpRule_Put) Size() (n int) {
 	if m == nil {
 		return 0
@@ -861,6 +892,7 @@ func (m *HttpRule_Put) Size() (n int) {
 	n += 1 + l + sovHttp(uint64(l))
 	return n
 }
+
 func (m *HttpRule_Post) Size() (n int) {
 	if m == nil {
 		return 0
@@ -871,6 +903,7 @@ func (m *HttpRule_Post) Size() (n int) {
 	n += 1 + l + sovHttp(uint64(l))
 	return n
 }
+
 func (m *HttpRule_Delete) Size() (n int) {
 	if m == nil {
 		return 0
@@ -881,6 +914,7 @@ func (m *HttpRule_Delete) Size() (n int) {
 	n += 1 + l + sovHttp(uint64(l))
 	return n
 }
+
 func (m *HttpRule_Patch) Size() (n int) {
 	if m == nil {
 		return 0
@@ -891,6 +925,7 @@ func (m *HttpRule_Patch) Size() (n int) {
 	n += 1 + l + sovHttp(uint64(l))
 	return n
 }
+
 func (m *HttpRule_Custom) Size() (n int) {
 	if m == nil {
 		return 0
@@ -903,6 +938,7 @@ func (m *HttpRule_Custom) Size() (n int) {
 	}
 	return n
 }
+
 func (m *CustomHttpPattern) Size() (n int) {
 	if m == nil {
 		return 0
@@ -930,9 +966,11 @@ func sovHttp(x uint64) (n int) {
 	}
 	return n
 }
+
 func sozHttp(x uint64) (n int) {
 	return sovHttp(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
+
 func (m *Http) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -1014,6 +1052,7 @@ func (m *Http) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
+
 func (m *HttpRule) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -1330,6 +1369,7 @@ func (m *HttpRule) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
+
 func (m *CustomHttpPattern) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -1438,6 +1478,7 @@ func (m *CustomHttpPattern) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
+
 func skipHttp(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0

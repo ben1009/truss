@@ -5,14 +5,17 @@ package descriptor
 
 import (
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
 	math "math"
+
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
-var _ = proto.Marshal
-var _ = fmt.Errorf
-var _ = math.Inf
+var (
+	_ = proto.Marshal
+	_ = fmt.Errorf
+	_ = math.Inf
+)
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the proto package it is being compiled against.
@@ -359,18 +362,23 @@ func (*FileDescriptorSet) ProtoMessage()    {}
 func (*FileDescriptorSet) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{0}
 }
+
 func (m *FileDescriptorSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileDescriptorSet.Unmarshal(m, b)
 }
+
 func (m *FileDescriptorSet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_FileDescriptorSet.Marshal(b, m, deterministic)
 }
+
 func (m *FileDescriptorSet) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_FileDescriptorSet.Merge(m, src)
 }
+
 func (m *FileDescriptorSet) XXX_Size() int {
 	return xxx_messageInfo_FileDescriptorSet.Size(m)
 }
+
 func (m *FileDescriptorSet) XXX_DiscardUnknown() {
 	xxx_messageInfo_FileDescriptorSet.DiscardUnknown(m)
 }
@@ -420,18 +428,23 @@ func (*FileDescriptorProto) ProtoMessage()    {}
 func (*FileDescriptorProto) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{1}
 }
+
 func (m *FileDescriptorProto) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileDescriptorProto.Unmarshal(m, b)
 }
+
 func (m *FileDescriptorProto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_FileDescriptorProto.Marshal(b, m, deterministic)
 }
+
 func (m *FileDescriptorProto) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_FileDescriptorProto.Merge(m, src)
 }
+
 func (m *FileDescriptorProto) XXX_Size() int {
 	return xxx_messageInfo_FileDescriptorProto.Size(m)
 }
+
 func (m *FileDescriptorProto) XXX_DiscardUnknown() {
 	xxx_messageInfo_FileDescriptorProto.DiscardUnknown(m)
 }
@@ -547,18 +560,23 @@ func (*DescriptorProto) ProtoMessage()    {}
 func (*DescriptorProto) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{2}
 }
+
 func (m *DescriptorProto) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DescriptorProto.Unmarshal(m, b)
 }
+
 func (m *DescriptorProto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DescriptorProto.Marshal(b, m, deterministic)
 }
+
 func (m *DescriptorProto) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_DescriptorProto.Merge(m, src)
 }
+
 func (m *DescriptorProto) XXX_Size() int {
 	return xxx_messageInfo_DescriptorProto.Size(m)
 }
+
 func (m *DescriptorProto) XXX_DiscardUnknown() {
 	xxx_messageInfo_DescriptorProto.DiscardUnknown(m)
 }
@@ -650,18 +668,23 @@ func (*DescriptorProto_ExtensionRange) ProtoMessage()    {}
 func (*DescriptorProto_ExtensionRange) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{2, 0}
 }
+
 func (m *DescriptorProto_ExtensionRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DescriptorProto_ExtensionRange.Unmarshal(m, b)
 }
+
 func (m *DescriptorProto_ExtensionRange) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DescriptorProto_ExtensionRange.Marshal(b, m, deterministic)
 }
+
 func (m *DescriptorProto_ExtensionRange) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_DescriptorProto_ExtensionRange.Merge(m, src)
 }
+
 func (m *DescriptorProto_ExtensionRange) XXX_Size() int {
 	return xxx_messageInfo_DescriptorProto_ExtensionRange.Size(m)
 }
+
 func (m *DescriptorProto_ExtensionRange) XXX_DiscardUnknown() {
 	xxx_messageInfo_DescriptorProto_ExtensionRange.DiscardUnknown(m)
 }
@@ -706,18 +729,23 @@ func (*DescriptorProto_ReservedRange) ProtoMessage()    {}
 func (*DescriptorProto_ReservedRange) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{2, 1}
 }
+
 func (m *DescriptorProto_ReservedRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DescriptorProto_ReservedRange.Unmarshal(m, b)
 }
+
 func (m *DescriptorProto_ReservedRange) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DescriptorProto_ReservedRange.Marshal(b, m, deterministic)
 }
+
 func (m *DescriptorProto_ReservedRange) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_DescriptorProto_ReservedRange.Merge(m, src)
 }
+
 func (m *DescriptorProto_ReservedRange) XXX_Size() int {
 	return xxx_messageInfo_DescriptorProto_ReservedRange.Size(m)
 }
+
 func (m *DescriptorProto_ReservedRange) XXX_DiscardUnknown() {
 	xxx_messageInfo_DescriptorProto_ReservedRange.DiscardUnknown(m)
 }
@@ -765,15 +793,19 @@ func (*ExtensionRangeOptions) ExtensionRangeArray() []proto.ExtensionRange {
 func (m *ExtensionRangeOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExtensionRangeOptions.Unmarshal(m, b)
 }
+
 func (m *ExtensionRangeOptions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ExtensionRangeOptions.Marshal(b, m, deterministic)
 }
+
 func (m *ExtensionRangeOptions) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_ExtensionRangeOptions.Merge(m, src)
 }
+
 func (m *ExtensionRangeOptions) XXX_Size() int {
 	return xxx_messageInfo_ExtensionRangeOptions.Size(m)
 }
+
 func (m *ExtensionRangeOptions) XXX_DiscardUnknown() {
 	xxx_messageInfo_ExtensionRangeOptions.DiscardUnknown(m)
 }
@@ -830,18 +862,23 @@ func (*FieldDescriptorProto) ProtoMessage()    {}
 func (*FieldDescriptorProto) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{4}
 }
+
 func (m *FieldDescriptorProto) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FieldDescriptorProto.Unmarshal(m, b)
 }
+
 func (m *FieldDescriptorProto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_FieldDescriptorProto.Marshal(b, m, deterministic)
 }
+
 func (m *FieldDescriptorProto) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_FieldDescriptorProto.Merge(m, src)
 }
+
 func (m *FieldDescriptorProto) XXX_Size() int {
 	return xxx_messageInfo_FieldDescriptorProto.Size(m)
 }
+
 func (m *FieldDescriptorProto) XXX_DiscardUnknown() {
 	xxx_messageInfo_FieldDescriptorProto.DiscardUnknown(m)
 }
@@ -933,18 +970,23 @@ func (*OneofDescriptorProto) ProtoMessage()    {}
 func (*OneofDescriptorProto) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{5}
 }
+
 func (m *OneofDescriptorProto) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OneofDescriptorProto.Unmarshal(m, b)
 }
+
 func (m *OneofDescriptorProto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_OneofDescriptorProto.Marshal(b, m, deterministic)
 }
+
 func (m *OneofDescriptorProto) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_OneofDescriptorProto.Merge(m, src)
 }
+
 func (m *OneofDescriptorProto) XXX_Size() int {
 	return xxx_messageInfo_OneofDescriptorProto.Size(m)
 }
+
 func (m *OneofDescriptorProto) XXX_DiscardUnknown() {
 	xxx_messageInfo_OneofDescriptorProto.DiscardUnknown(m)
 }
@@ -988,18 +1030,23 @@ func (*EnumDescriptorProto) ProtoMessage()    {}
 func (*EnumDescriptorProto) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{6}
 }
+
 func (m *EnumDescriptorProto) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EnumDescriptorProto.Unmarshal(m, b)
 }
+
 func (m *EnumDescriptorProto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_EnumDescriptorProto.Marshal(b, m, deterministic)
 }
+
 func (m *EnumDescriptorProto) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_EnumDescriptorProto.Merge(m, src)
 }
+
 func (m *EnumDescriptorProto) XXX_Size() int {
 	return xxx_messageInfo_EnumDescriptorProto.Size(m)
 }
+
 func (m *EnumDescriptorProto) XXX_DiscardUnknown() {
 	xxx_messageInfo_EnumDescriptorProto.DiscardUnknown(m)
 }
@@ -1061,18 +1108,23 @@ func (*EnumDescriptorProto_EnumReservedRange) ProtoMessage()    {}
 func (*EnumDescriptorProto_EnumReservedRange) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{6, 0}
 }
+
 func (m *EnumDescriptorProto_EnumReservedRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EnumDescriptorProto_EnumReservedRange.Unmarshal(m, b)
 }
+
 func (m *EnumDescriptorProto_EnumReservedRange) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_EnumDescriptorProto_EnumReservedRange.Marshal(b, m, deterministic)
 }
+
 func (m *EnumDescriptorProto_EnumReservedRange) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_EnumDescriptorProto_EnumReservedRange.Merge(m, src)
 }
+
 func (m *EnumDescriptorProto_EnumReservedRange) XXX_Size() int {
 	return xxx_messageInfo_EnumDescriptorProto_EnumReservedRange.Size(m)
 }
+
 func (m *EnumDescriptorProto_EnumReservedRange) XXX_DiscardUnknown() {
 	xxx_messageInfo_EnumDescriptorProto_EnumReservedRange.DiscardUnknown(m)
 }
@@ -1109,18 +1161,23 @@ func (*EnumValueDescriptorProto) ProtoMessage()    {}
 func (*EnumValueDescriptorProto) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{7}
 }
+
 func (m *EnumValueDescriptorProto) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EnumValueDescriptorProto.Unmarshal(m, b)
 }
+
 func (m *EnumValueDescriptorProto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_EnumValueDescriptorProto.Marshal(b, m, deterministic)
 }
+
 func (m *EnumValueDescriptorProto) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_EnumValueDescriptorProto.Merge(m, src)
 }
+
 func (m *EnumValueDescriptorProto) XXX_Size() int {
 	return xxx_messageInfo_EnumValueDescriptorProto.Size(m)
 }
+
 func (m *EnumValueDescriptorProto) XXX_DiscardUnknown() {
 	xxx_messageInfo_EnumValueDescriptorProto.DiscardUnknown(m)
 }
@@ -1164,18 +1221,23 @@ func (*ServiceDescriptorProto) ProtoMessage()    {}
 func (*ServiceDescriptorProto) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{8}
 }
+
 func (m *ServiceDescriptorProto) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceDescriptorProto.Unmarshal(m, b)
 }
+
 func (m *ServiceDescriptorProto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ServiceDescriptorProto.Marshal(b, m, deterministic)
 }
+
 func (m *ServiceDescriptorProto) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_ServiceDescriptorProto.Merge(m, src)
 }
+
 func (m *ServiceDescriptorProto) XXX_Size() int {
 	return xxx_messageInfo_ServiceDescriptorProto.Size(m)
 }
+
 func (m *ServiceDescriptorProto) XXX_DiscardUnknown() {
 	xxx_messageInfo_ServiceDescriptorProto.DiscardUnknown(m)
 }
@@ -1226,26 +1288,33 @@ func (*MethodDescriptorProto) ProtoMessage()    {}
 func (*MethodDescriptorProto) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{9}
 }
+
 func (m *MethodDescriptorProto) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MethodDescriptorProto.Unmarshal(m, b)
 }
+
 func (m *MethodDescriptorProto) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_MethodDescriptorProto.Marshal(b, m, deterministic)
 }
+
 func (m *MethodDescriptorProto) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MethodDescriptorProto.Merge(m, src)
 }
+
 func (m *MethodDescriptorProto) XXX_Size() int {
 	return xxx_messageInfo_MethodDescriptorProto.Size(m)
 }
+
 func (m *MethodDescriptorProto) XXX_DiscardUnknown() {
 	xxx_messageInfo_MethodDescriptorProto.DiscardUnknown(m)
 }
 
 var xxx_messageInfo_MethodDescriptorProto proto.InternalMessageInfo
 
-const Default_MethodDescriptorProto_ClientStreaming bool = false
-const Default_MethodDescriptorProto_ServerStreaming bool = false
+const (
+	Default_MethodDescriptorProto_ClientStreaming bool = false
+	Default_MethodDescriptorProto_ServerStreaming bool = false
+)
 
 func (m *MethodDescriptorProto) GetName() string {
 	if m != nil && m.Name != nil {
@@ -1398,30 +1467,36 @@ func (*FileOptions) ExtensionRangeArray() []proto.ExtensionRange {
 func (m *FileOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileOptions.Unmarshal(m, b)
 }
+
 func (m *FileOptions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_FileOptions.Marshal(b, m, deterministic)
 }
+
 func (m *FileOptions) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_FileOptions.Merge(m, src)
 }
+
 func (m *FileOptions) XXX_Size() int {
 	return xxx_messageInfo_FileOptions.Size(m)
 }
+
 func (m *FileOptions) XXX_DiscardUnknown() {
 	xxx_messageInfo_FileOptions.DiscardUnknown(m)
 }
 
 var xxx_messageInfo_FileOptions proto.InternalMessageInfo
 
-const Default_FileOptions_JavaMultipleFiles bool = false
-const Default_FileOptions_JavaStringCheckUtf8 bool = false
-const Default_FileOptions_OptimizeFor FileOptions_OptimizeMode = FileOptions_SPEED
-const Default_FileOptions_CcGenericServices bool = false
-const Default_FileOptions_JavaGenericServices bool = false
-const Default_FileOptions_PyGenericServices bool = false
-const Default_FileOptions_PhpGenericServices bool = false
-const Default_FileOptions_Deprecated bool = false
-const Default_FileOptions_CcEnableArenas bool = false
+const (
+	Default_FileOptions_JavaMultipleFiles   bool                     = false
+	Default_FileOptions_JavaStringCheckUtf8 bool                     = false
+	Default_FileOptions_OptimizeFor         FileOptions_OptimizeMode = FileOptions_SPEED
+	Default_FileOptions_CcGenericServices   bool                     = false
+	Default_FileOptions_JavaGenericServices bool                     = false
+	Default_FileOptions_PyGenericServices   bool                     = false
+	Default_FileOptions_PhpGenericServices  bool                     = false
+	Default_FileOptions_Deprecated          bool                     = false
+	Default_FileOptions_CcEnableArenas      bool                     = false
+)
 
 func (m *FileOptions) GetJavaPackage() string {
 	if m != nil && m.JavaPackage != nil {
@@ -1648,24 +1723,30 @@ func (*MessageOptions) ExtensionRangeArray() []proto.ExtensionRange {
 func (m *MessageOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MessageOptions.Unmarshal(m, b)
 }
+
 func (m *MessageOptions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_MessageOptions.Marshal(b, m, deterministic)
 }
+
 func (m *MessageOptions) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MessageOptions.Merge(m, src)
 }
+
 func (m *MessageOptions) XXX_Size() int {
 	return xxx_messageInfo_MessageOptions.Size(m)
 }
+
 func (m *MessageOptions) XXX_DiscardUnknown() {
 	xxx_messageInfo_MessageOptions.DiscardUnknown(m)
 }
 
 var xxx_messageInfo_MessageOptions proto.InternalMessageInfo
 
-const Default_MessageOptions_MessageSetWireFormat bool = false
-const Default_MessageOptions_NoStandardDescriptorAccessor bool = false
-const Default_MessageOptions_Deprecated bool = false
+const (
+	Default_MessageOptions_MessageSetWireFormat         bool = false
+	Default_MessageOptions_NoStandardDescriptorAccessor bool = false
+	Default_MessageOptions_Deprecated                   bool = false
+)
 
 func (m *MessageOptions) GetMessageSetWireFormat() bool {
 	if m != nil && m.MessageSetWireFormat != nil {
@@ -1788,26 +1869,32 @@ func (*FieldOptions) ExtensionRangeArray() []proto.ExtensionRange {
 func (m *FieldOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FieldOptions.Unmarshal(m, b)
 }
+
 func (m *FieldOptions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_FieldOptions.Marshal(b, m, deterministic)
 }
+
 func (m *FieldOptions) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_FieldOptions.Merge(m, src)
 }
+
 func (m *FieldOptions) XXX_Size() int {
 	return xxx_messageInfo_FieldOptions.Size(m)
 }
+
 func (m *FieldOptions) XXX_DiscardUnknown() {
 	xxx_messageInfo_FieldOptions.DiscardUnknown(m)
 }
 
 var xxx_messageInfo_FieldOptions proto.InternalMessageInfo
 
-const Default_FieldOptions_Ctype FieldOptions_CType = FieldOptions_STRING
-const Default_FieldOptions_Jstype FieldOptions_JSType = FieldOptions_JS_NORMAL
-const Default_FieldOptions_Lazy bool = false
-const Default_FieldOptions_Deprecated bool = false
-const Default_FieldOptions_Weak bool = false
+const (
+	Default_FieldOptions_Ctype      FieldOptions_CType  = FieldOptions_STRING
+	Default_FieldOptions_Jstype     FieldOptions_JSType = FieldOptions_JS_NORMAL
+	Default_FieldOptions_Lazy       bool                = false
+	Default_FieldOptions_Deprecated bool                = false
+	Default_FieldOptions_Weak       bool                = false
+)
 
 func (m *FieldOptions) GetCtype() FieldOptions_CType {
 	if m != nil && m.Ctype != nil {
@@ -1885,15 +1972,19 @@ func (*OneofOptions) ExtensionRangeArray() []proto.ExtensionRange {
 func (m *OneofOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OneofOptions.Unmarshal(m, b)
 }
+
 func (m *OneofOptions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_OneofOptions.Marshal(b, m, deterministic)
 }
+
 func (m *OneofOptions) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_OneofOptions.Merge(m, src)
 }
+
 func (m *OneofOptions) XXX_Size() int {
 	return xxx_messageInfo_OneofOptions.Size(m)
 }
+
 func (m *OneofOptions) XXX_DiscardUnknown() {
 	xxx_messageInfo_OneofOptions.DiscardUnknown(m)
 }
@@ -1942,15 +2033,19 @@ func (*EnumOptions) ExtensionRangeArray() []proto.ExtensionRange {
 func (m *EnumOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EnumOptions.Unmarshal(m, b)
 }
+
 func (m *EnumOptions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_EnumOptions.Marshal(b, m, deterministic)
 }
+
 func (m *EnumOptions) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_EnumOptions.Merge(m, src)
 }
+
 func (m *EnumOptions) XXX_Size() int {
 	return xxx_messageInfo_EnumOptions.Size(m)
 }
+
 func (m *EnumOptions) XXX_DiscardUnknown() {
 	xxx_messageInfo_EnumOptions.DiscardUnknown(m)
 }
@@ -2012,15 +2107,19 @@ func (*EnumValueOptions) ExtensionRangeArray() []proto.ExtensionRange {
 func (m *EnumValueOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EnumValueOptions.Unmarshal(m, b)
 }
+
 func (m *EnumValueOptions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_EnumValueOptions.Marshal(b, m, deterministic)
 }
+
 func (m *EnumValueOptions) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_EnumValueOptions.Merge(m, src)
 }
+
 func (m *EnumValueOptions) XXX_Size() int {
 	return xxx_messageInfo_EnumValueOptions.Size(m)
 }
+
 func (m *EnumValueOptions) XXX_DiscardUnknown() {
 	xxx_messageInfo_EnumValueOptions.DiscardUnknown(m)
 }
@@ -2075,15 +2174,19 @@ func (*ServiceOptions) ExtensionRangeArray() []proto.ExtensionRange {
 func (m *ServiceOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceOptions.Unmarshal(m, b)
 }
+
 func (m *ServiceOptions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ServiceOptions.Marshal(b, m, deterministic)
 }
+
 func (m *ServiceOptions) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_ServiceOptions.Merge(m, src)
 }
+
 func (m *ServiceOptions) XXX_Size() int {
 	return xxx_messageInfo_ServiceOptions.Size(m)
 }
+
 func (m *ServiceOptions) XXX_DiscardUnknown() {
 	xxx_messageInfo_ServiceOptions.DiscardUnknown(m)
 }
@@ -2139,23 +2242,29 @@ func (*MethodOptions) ExtensionRangeArray() []proto.ExtensionRange {
 func (m *MethodOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MethodOptions.Unmarshal(m, b)
 }
+
 func (m *MethodOptions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_MethodOptions.Marshal(b, m, deterministic)
 }
+
 func (m *MethodOptions) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MethodOptions.Merge(m, src)
 }
+
 func (m *MethodOptions) XXX_Size() int {
 	return xxx_messageInfo_MethodOptions.Size(m)
 }
+
 func (m *MethodOptions) XXX_DiscardUnknown() {
 	xxx_messageInfo_MethodOptions.DiscardUnknown(m)
 }
 
 var xxx_messageInfo_MethodOptions proto.InternalMessageInfo
 
-const Default_MethodOptions_Deprecated bool = false
-const Default_MethodOptions_IdempotencyLevel MethodOptions_IdempotencyLevel = MethodOptions_IDEMPOTENCY_UNKNOWN
+const (
+	Default_MethodOptions_Deprecated       bool                           = false
+	Default_MethodOptions_IdempotencyLevel MethodOptions_IdempotencyLevel = MethodOptions_IDEMPOTENCY_UNKNOWN
+)
 
 func (m *MethodOptions) GetDeprecated() bool {
 	if m != nil && m.Deprecated != nil {
@@ -2205,18 +2314,23 @@ func (*UninterpretedOption) ProtoMessage()    {}
 func (*UninterpretedOption) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{18}
 }
+
 func (m *UninterpretedOption) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UninterpretedOption.Unmarshal(m, b)
 }
+
 func (m *UninterpretedOption) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_UninterpretedOption.Marshal(b, m, deterministic)
 }
+
 func (m *UninterpretedOption) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_UninterpretedOption.Merge(m, src)
 }
+
 func (m *UninterpretedOption) XXX_Size() int {
 	return xxx_messageInfo_UninterpretedOption.Size(m)
 }
+
 func (m *UninterpretedOption) XXX_DiscardUnknown() {
 	xxx_messageInfo_UninterpretedOption.DiscardUnknown(m)
 }
@@ -2291,18 +2405,23 @@ func (*UninterpretedOption_NamePart) ProtoMessage()    {}
 func (*UninterpretedOption_NamePart) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{18, 0}
 }
+
 func (m *UninterpretedOption_NamePart) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UninterpretedOption_NamePart.Unmarshal(m, b)
 }
+
 func (m *UninterpretedOption_NamePart) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_UninterpretedOption_NamePart.Marshal(b, m, deterministic)
 }
+
 func (m *UninterpretedOption_NamePart) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_UninterpretedOption_NamePart.Merge(m, src)
 }
+
 func (m *UninterpretedOption_NamePart) XXX_Size() int {
 	return xxx_messageInfo_UninterpretedOption_NamePart.Size(m)
 }
+
 func (m *UninterpretedOption_NamePart) XXX_DiscardUnknown() {
 	xxx_messageInfo_UninterpretedOption_NamePart.DiscardUnknown(m)
 }
@@ -2381,18 +2500,23 @@ func (*SourceCodeInfo) ProtoMessage()    {}
 func (*SourceCodeInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{19}
 }
+
 func (m *SourceCodeInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceCodeInfo.Unmarshal(m, b)
 }
+
 func (m *SourceCodeInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SourceCodeInfo.Marshal(b, m, deterministic)
 }
+
 func (m *SourceCodeInfo) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_SourceCodeInfo.Merge(m, src)
 }
+
 func (m *SourceCodeInfo) XXX_Size() int {
 	return xxx_messageInfo_SourceCodeInfo.Size(m)
 }
+
 func (m *SourceCodeInfo) XXX_DiscardUnknown() {
 	xxx_messageInfo_SourceCodeInfo.DiscardUnknown(m)
 }
@@ -2498,18 +2622,23 @@ func (*SourceCodeInfo_Location) ProtoMessage()    {}
 func (*SourceCodeInfo_Location) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{19, 0}
 }
+
 func (m *SourceCodeInfo_Location) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceCodeInfo_Location.Unmarshal(m, b)
 }
+
 func (m *SourceCodeInfo_Location) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SourceCodeInfo_Location.Marshal(b, m, deterministic)
 }
+
 func (m *SourceCodeInfo_Location) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_SourceCodeInfo_Location.Merge(m, src)
 }
+
 func (m *SourceCodeInfo_Location) XXX_Size() int {
 	return xxx_messageInfo_SourceCodeInfo_Location.Size(m)
 }
+
 func (m *SourceCodeInfo_Location) XXX_DiscardUnknown() {
 	xxx_messageInfo_SourceCodeInfo_Location.DiscardUnknown(m)
 }
@@ -2569,18 +2698,23 @@ func (*GeneratedCodeInfo) ProtoMessage()    {}
 func (*GeneratedCodeInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{20}
 }
+
 func (m *GeneratedCodeInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GeneratedCodeInfo.Unmarshal(m, b)
 }
+
 func (m *GeneratedCodeInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GeneratedCodeInfo.Marshal(b, m, deterministic)
 }
+
 func (m *GeneratedCodeInfo) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_GeneratedCodeInfo.Merge(m, src)
 }
+
 func (m *GeneratedCodeInfo) XXX_Size() int {
 	return xxx_messageInfo_GeneratedCodeInfo.Size(m)
 }
+
 func (m *GeneratedCodeInfo) XXX_DiscardUnknown() {
 	xxx_messageInfo_GeneratedCodeInfo.DiscardUnknown(m)
 }
@@ -2618,18 +2752,23 @@ func (*GeneratedCodeInfo_Annotation) ProtoMessage()    {}
 func (*GeneratedCodeInfo_Annotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_308767df5ffe18af, []int{20, 0}
 }
+
 func (m *GeneratedCodeInfo_Annotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GeneratedCodeInfo_Annotation.Unmarshal(m, b)
 }
+
 func (m *GeneratedCodeInfo_Annotation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GeneratedCodeInfo_Annotation.Marshal(b, m, deterministic)
 }
+
 func (m *GeneratedCodeInfo_Annotation) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_GeneratedCodeInfo_Annotation.Merge(m, src)
 }
+
 func (m *GeneratedCodeInfo_Annotation) XXX_Size() int {
 	return xxx_messageInfo_GeneratedCodeInfo_Annotation.Size(m)
 }
+
 func (m *GeneratedCodeInfo_Annotation) XXX_DiscardUnknown() {
 	xxx_messageInfo_GeneratedCodeInfo_Annotation.DiscardUnknown(m)
 }

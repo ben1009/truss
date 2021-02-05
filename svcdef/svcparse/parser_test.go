@@ -33,7 +33,6 @@ func TestUnderscoreIdent(t *testing.T) {
 	r := strings.NewReader("service Example_Service {}")
 	lex := NewSvcLexer(r)
 	svc, err := ParseService(lex)
-
 	if err != nil {
 		t.Error(err)
 	}
@@ -64,7 +63,6 @@ service Example_Service {
 `)
 	lex := NewSvcLexer(r)
 	svc, err := ParseService(lex)
-
 	if err != nil {
 		t.Error(err)
 	}
@@ -95,24 +93,24 @@ service Example_Service {
 	}
 
 	bindings := []*HTTPBinding{
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:  "post",
 					Kind:  "post",
 					Value: "/ExamplePost",
 				},
 			},
 		},
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:        "get",
 					Description: "// Some example comment\n",
 					Kind:        "get",
 					Value:       "/ExampleGet",
 				},
-				&Field{
+				{
 					Name:  "body",
 					Kind:  "body",
 					Value: "*",
@@ -145,7 +143,6 @@ service Example_Service {
 `)
 	lex := NewSvcLexer(r)
 	svc, err := ParseService(lex)
-
 	if err != nil {
 		t.Error(err)
 	}
@@ -175,24 +172,24 @@ service Example_Service {
 	}
 
 	bindings := []*HTTPBinding{
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:  "post",
 					Kind:  "post",
 					Value: "/ExamplePost",
 				},
 			},
 		},
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:        "get",
 					Description: "// Some example comment\n",
 					Kind:        "get",
 					Value:       "/ExampleGet",
 				},
-				&Field{
+				{
 					Name:  "body",
 					Kind:  "body",
 					Value: "*",
@@ -225,7 +222,6 @@ service Example_Service {
 `)
 	lex := NewSvcLexer(r)
 	svc, err := ParseService(lex)
-
 	if err != nil {
 		t.Error(err)
 	}
@@ -255,24 +251,24 @@ service Example_Service {
 	}
 
 	bindings := []*HTTPBinding{
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:  "post",
 					Kind:  "post",
 					Value: "/ExamplePost",
 				},
 			},
 		},
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:        "get",
 					Description: "// Some example comment\n",
 					Kind:        "get",
 					Value:       "/ExampleGet",
 				},
-				&Field{
+				{
 					Name:  "body",
 					Kind:  "body",
 					Value: "*",
@@ -317,7 +313,6 @@ service Example_Service {
 `)
 	lex := NewSvcLexer(r)
 	svc, err := ParseService(lex)
-
 	if err != nil {
 		t.Error(err)
 	}
@@ -357,24 +352,24 @@ service Example_Service {
 	}
 
 	bindingsone := []*HTTPBinding{
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:  "post",
 					Kind:  "post",
 					Value: "/ExamplePost",
 				},
 			},
 		},
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:        "get",
 					Description: "// Some example comment\n",
 					Kind:        "get",
 					Value:       "/ExampleGet",
 				},
-				&Field{
+				{
 					Name:  "body",
 					Kind:  "body",
 					Value: "*",
@@ -388,9 +383,9 @@ service Example_Service {
 	}
 
 	bindingstwo := []*HTTPBinding{
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:        "post",
 					Description: "// Second binding, this time for post\n",
 					Kind:        "post",
@@ -398,15 +393,15 @@ service Example_Service {
 				},
 			},
 		},
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:        "get",
 					Description: "// Second group of example comments\n",
 					Kind:        "get",
 					Value:       "/SecondExampleGet",
 				},
-				&Field{
+				{
 					Name:  "body",
 					Kind:  "body",
 					Value: "*",
@@ -442,7 +437,6 @@ service FlowCombination {
 `)
 	lex := NewSvcLexer(r)
 	svc, err := ParseService(lex)
-
 	if err != nil {
 		t.Error(err)
 	}
@@ -489,9 +483,9 @@ service FlowCombination {
 	}
 
 	bindingsone := []*HTTPBinding{
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:  "post",
 					Kind:  "post",
 					Value: "/rpc/empty/stream",
@@ -505,9 +499,9 @@ service FlowCombination {
 	}
 
 	bindingstwo := []*HTTPBinding{
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:  "post",
 					Kind:  "post",
 					Value: "/stream/empty/rpc",
@@ -520,9 +514,9 @@ service FlowCombination {
 	}
 
 	bindingsthree := []*HTTPBinding{
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Name:  "post",
 					Kind:  "post",
 					Value: "/stream/empty/stream",
@@ -573,7 +567,6 @@ service FlowCombination {
 
 	lex := NewSvcLexer(r)
 	svc, err := ParseService(lex)
-
 	if err != nil {
 		t.Error(err)
 	}
@@ -696,9 +689,9 @@ func TestCustomHTTPPatternOutputExample(t *testing.T) {
 	}
 
 	expectedBinding := []*HTTPBinding{
-		&HTTPBinding{
+		{
 			Fields: []*Field{
-				&Field{
+				{
 					Description: "// This 'body' field is optional\n",
 					Name:        "body",
 					Kind:        "body",
@@ -706,13 +699,13 @@ func TestCustomHTTPPatternOutputExample(t *testing.T) {
 				},
 			},
 			CustomHTTPPattern: []*Field{
-				&Field{
+				{
 					Description: "// The verb itself goes in the \"kind\" field\n",
 					Name:        "kind",
 					Kind:        "kind",
 					Value:       "MYVERBHERE",
 				},
-				&Field{
+				{
 					Description: "// Likewise, path goes in the \"path\" field. As always, the path\n\t\t\t\t\t// may have parameters within it.\n",
 					Name:        "path",
 					Kind:        "path",

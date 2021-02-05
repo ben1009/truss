@@ -5,19 +5,22 @@ package descriptor
 
 import (
 	fmt "fmt"
-	github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
-	proto "github.com/gogo/protobuf/proto"
 	math "math"
 	reflect "reflect"
 	sort "sort"
 	strconv "strconv"
 	strings "strings"
+
+	github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
+	proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
-var _ = proto.Marshal
-var _ = fmt.Errorf
-var _ = math.Inf
+var (
+	_ = proto.Marshal
+	_ = fmt.Errorf
+	_ = math.Inf
+)
 
 func (this *FileDescriptorSet) GoString() string {
 	if this == nil {
@@ -34,6 +37,7 @@ func (this *FileDescriptorSet) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *FileDescriptorProto) GoString() string {
 	if this == nil {
 		return "nil"
@@ -82,6 +86,7 @@ func (this *FileDescriptorProto) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *DescriptorProto) GoString() string {
 	if this == nil {
 		return "nil"
@@ -124,6 +129,7 @@ func (this *DescriptorProto) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *DescriptorProto_ExtensionRange) GoString() string {
 	if this == nil {
 		return "nil"
@@ -145,6 +151,7 @@ func (this *DescriptorProto_ExtensionRange) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *DescriptorProto_ReservedRange) GoString() string {
 	if this == nil {
 		return "nil"
@@ -163,6 +170,7 @@ func (this *DescriptorProto_ReservedRange) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *ExtensionRangeOptions) GoString() string {
 	if this == nil {
 		return "nil"
@@ -179,6 +187,7 @@ func (this *ExtensionRangeOptions) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *FieldDescriptorProto) GoString() string {
 	if this == nil {
 		return "nil"
@@ -221,6 +230,7 @@ func (this *FieldDescriptorProto) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *OneofDescriptorProto) GoString() string {
 	if this == nil {
 		return "nil"
@@ -239,6 +249,7 @@ func (this *OneofDescriptorProto) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *EnumDescriptorProto) GoString() string {
 	if this == nil {
 		return "nil"
@@ -266,6 +277,7 @@ func (this *EnumDescriptorProto) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *EnumDescriptorProto_EnumReservedRange) GoString() string {
 	if this == nil {
 		return "nil"
@@ -284,6 +296,7 @@ func (this *EnumDescriptorProto_EnumReservedRange) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *EnumValueDescriptorProto) GoString() string {
 	if this == nil {
 		return "nil"
@@ -305,6 +318,7 @@ func (this *EnumValueDescriptorProto) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *ServiceDescriptorProto) GoString() string {
 	if this == nil {
 		return "nil"
@@ -326,6 +340,7 @@ func (this *ServiceDescriptorProto) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *MethodDescriptorProto) GoString() string {
 	if this == nil {
 		return "nil"
@@ -356,6 +371,7 @@ func (this *MethodDescriptorProto) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *FileOptions) GoString() string {
 	if this == nil {
 		return "nil"
@@ -432,6 +448,7 @@ func (this *FileOptions) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *MessageOptions) GoString() string {
 	if this == nil {
 		return "nil"
@@ -460,6 +477,7 @@ func (this *MessageOptions) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *FieldOptions) GoString() string {
 	if this == nil {
 		return "nil"
@@ -494,6 +512,7 @@ func (this *FieldOptions) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *OneofOptions) GoString() string {
 	if this == nil {
 		return "nil"
@@ -510,6 +529,7 @@ func (this *OneofOptions) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *EnumOptions) GoString() string {
 	if this == nil {
 		return "nil"
@@ -532,6 +552,7 @@ func (this *EnumOptions) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *EnumValueOptions) GoString() string {
 	if this == nil {
 		return "nil"
@@ -551,6 +572,7 @@ func (this *EnumValueOptions) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *ServiceOptions) GoString() string {
 	if this == nil {
 		return "nil"
@@ -570,6 +592,7 @@ func (this *ServiceOptions) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *MethodOptions) GoString() string {
 	if this == nil {
 		return "nil"
@@ -592,6 +615,7 @@ func (this *MethodOptions) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *UninterpretedOption) GoString() string {
 	if this == nil {
 		return "nil"
@@ -625,6 +649,7 @@ func (this *UninterpretedOption) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *UninterpretedOption_NamePart) GoString() string {
 	if this == nil {
 		return "nil"
@@ -643,6 +668,7 @@ func (this *UninterpretedOption_NamePart) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *SourceCodeInfo) GoString() string {
 	if this == nil {
 		return "nil"
@@ -658,6 +684,7 @@ func (this *SourceCodeInfo) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *SourceCodeInfo_Location) GoString() string {
 	if this == nil {
 		return "nil"
@@ -685,6 +712,7 @@ func (this *SourceCodeInfo_Location) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *GeneratedCodeInfo) GoString() string {
 	if this == nil {
 		return "nil"
@@ -700,6 +728,7 @@ func (this *GeneratedCodeInfo) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func (this *GeneratedCodeInfo_Annotation) GoString() string {
 	if this == nil {
 		return "nil"
@@ -724,6 +753,7 @@ func (this *GeneratedCodeInfo_Annotation) GoString() string {
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
+
 func valueToGoStringDescriptor(v interface{}, typ string) string {
 	rv := reflect.ValueOf(v)
 	if rv.IsNil() {
@@ -732,6 +762,7 @@ func valueToGoStringDescriptor(v interface{}, typ string) string {
 	pv := reflect.Indirect(rv).Interface()
 	return fmt.Sprintf("func(v %v) *%v { return &v } ( %#v )", typ, typ, pv)
 }
+
 func extensionToGoStringDescriptor(m github_com_gogo_protobuf_proto.Message) string {
 	e := github_com_gogo_protobuf_proto.GetUnsafeExtensionsMap(m)
 	if e == nil {

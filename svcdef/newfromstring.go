@@ -26,7 +26,7 @@ func NewFromString(def string, gopath []string) (*Svcdef, error) {
 
 	defPath := filepath.Join(protoDir, defFileName)
 
-	err = ioutil.WriteFile(defPath, []byte(def), 0666)
+	err = ioutil.WriteFile(defPath, []byte(def), 0o666)
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot write proto definition to file")
 	}

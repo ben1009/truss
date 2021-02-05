@@ -12,7 +12,6 @@ import (
 var middlewareEndpoints svc.Endpoints
 
 func TestMain(m *testing.M) {
-
 	var service pb.MiddlewaresTestServer
 	{
 		service = handlers.NewService()

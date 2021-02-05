@@ -17,7 +17,7 @@ func init() {
 }
 
 func TestRenderPrevEndpoints(t *testing.T) {
-	var wantEndpoints = `
+	wantEndpoints := `
 		package middlewares
 
 		import (

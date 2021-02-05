@@ -3,14 +3,13 @@ package httptransport
 import (
 	"bytes"
 	"fmt"
-	"reflect"
-	"runtime"
-	"strings"
-
 	"go/ast"
 	"go/parser"
 	"go/printer"
 	"go/token"
+	"reflect"
+	"runtime"
+	"strings"
 )
 
 // FuncSourceCode returns a string representing the source code of the function
@@ -55,7 +54,6 @@ func FuncSourceCode(val interface{}) (string, error) {
 // in the same file as the one provided, including the source of the function
 // provided.
 func AllFuncSourceCode(val interface{}) (string, error) {
-
 	ptr := reflect.ValueOf(val).Pointer()
 	fpath, _ := runtime.FuncForPC(ptr).FileLine(ptr)
 

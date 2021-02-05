@@ -2585,6 +2585,7 @@ type LoopInfo struct {
 	Init             [2]uint32
 	Reserved         [4]uint8
 }
+
 type LoopInfo64 struct {
 	Device           uint64
 	Inode            uint64

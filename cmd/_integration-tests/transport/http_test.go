@@ -1,19 +1,19 @@
 package test
 
 import (
-	"io"
-	"reflect"
-	"testing"
-
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"reflect"
 	"strings"
+	"testing"
 
 	// 3d Party
-	"context"
+
 	// This Service
 	pb "github.com/ben1009/truss/cmd/_integration-tests/transport/proto"
 	httpclient "github.com/ben1009/truss/cmd/_integration-tests/transport/transportpermutations-service/svc/client/http"
@@ -25,11 +25,15 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var httpAddr string
-var nonJSONHTTPAddr string
+var (
+	httpAddr        string
+	nonJSONHTTPAddr string
+)
 
-const brokenHTTPResponse = `<html> Not json </html>`
-const brokenHTTPRequest = brokenHTTPResponse
+const (
+	brokenHTTPResponse = `<html> Not json </html>`
+	brokenHTTPRequest  = brokenHTTPResponse
+)
 
 func TestGetWithQueryClient(t *testing.T) {
 	var req pb.GetWithQueryRequest
@@ -171,7 +175,6 @@ func TestGetWithRepeatedStringQueryRequest(t *testing.T) {
 			t.Fatal(errors.Wrap(err, "cannot make http request"))
 		}
 	})
-
 }
 
 func TestGetWithEnumQueryClient(t *testing.T) {
@@ -318,7 +321,7 @@ func TestPostWithNestedMessageBodyRequest(t *testing.T) {
 
 func TestCtxToCtxViaHTTPHeaderClient(t *testing.T) {
 	var req pb.MetaRequest
-	var key, value = "Truss-Auth-Header", "SECRET"
+	key, value := "Truss-Auth-Header", "SECRET"
 	req.Key = key
 
 	// Create a new client telling it to send "Truss-Auth-Header" as a header
@@ -367,7 +370,7 @@ func TestEchoOddNamesClient(t *testing.T) {
 
 func TestCtxToCtxViaHTTPHeaderRequest(t *testing.T) {
 	var resp pb.MetaResponse
-	var key, value = "Truss-Auth-Header", "SECRET"
+	key, value := "Truss-Auth-Header", "SECRET"
 
 	jsonStr := fmt.Sprintf(`{ "Key": %q }`, key)
 	fmt.Println(jsonStr)
@@ -693,8 +696,8 @@ func TestHTTPErrorStatusCodeAndHeaders(t *testing.T) {
 	defer httpResp.Body.Close()
 
 	got, want := httpResp.Header, map[string][]string{
-		"Foo":  []string{"Bar"},
-		"Test": []string{"A", "B"},
+		"Foo":  {"Bar"},
+		"Test": {"A", "B"},
 	}
 
 	for k := range want {

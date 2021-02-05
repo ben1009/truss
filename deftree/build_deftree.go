@@ -93,7 +93,7 @@ func NewFromString(def string, gopath []string) (Deftree, error) {
 
 	defPath := filepath.Join(protoDir, defFileName)
 
-	err = ioutil.WriteFile(defPath, []byte(def), 0666)
+	err = ioutil.WriteFile(defPath, []byte(def), 0o666)
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot write proto definition to file")
 	}
@@ -127,7 +127,6 @@ func findDeftreePackage(req *plugin.CodeGeneratorRequest) string {
 func NewFile(
 	pfile *descriptor.FileDescriptorProto,
 	curNewDt *MicroserviceDefinition) (*ProtoFile, error) {
-
 	newFile := ProtoFile{}
 	newFile.Name = pfile.GetName()
 
@@ -313,7 +312,6 @@ func NewService(
 	srvc *descriptor.ServiceDescriptorProto,
 	curNewFile *ProtoFile,
 	curNewDt *MicroserviceDefinition) (*ProtoService, error) {
-
 	newSvc := ProtoService{}
 	newSvc.Name = *srvc.Name
 
@@ -423,7 +421,6 @@ func convertSvcparse(parsedSvc *svcparse.Service) (*ProtoService, error) {
 // Parse the protobuf files for comments surrounding http options, then add
 // those to the Deftree in place.
 func addHttpOptions(dt Deftree, svc *ProtoService, protoFile io.Reader) error {
-
 	lex := svcparse.NewSvcLexer(protoFile)
 	ps, err := svcparse.ParseService(lex)
 	if err != nil {

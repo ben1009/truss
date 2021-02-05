@@ -52,7 +52,7 @@ type NestedTypeRequest struct {
 	}
 	tmap := newTypeMap(sd)
 
-	var cases = []struct {
+	cases := []struct {
 		name, fieldname, typename string
 	}{
 		{"NestedMessageA", "A", "NestedMessageC"},
@@ -137,5 +137,4 @@ type MsgWithMap struct {
 	if beta.ValueType.Message != expected {
 		t.Fatalf("Expected beta ValueType to be 'NestedMessageC', is %q", beta.ValueType.Message.Name)
 	}
-
 }
