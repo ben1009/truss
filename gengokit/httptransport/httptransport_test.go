@@ -6,9 +6,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/ben1009/truss/gengokit/gentesthelper"
 	"github.com/ben1009/truss/svcdef"
+	"github.com/davecgh/go-spew/spew"
 )
 
 var (
