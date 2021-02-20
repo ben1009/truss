@@ -13,9 +13,9 @@ source.
 To install this software, you must:
 
 1. Install protoc 3 or newer. The easiest way is to
-download a release from [github](https://github.com/google/protobuf/releases)
+download a release from [gogoprotobuf](https://github.com/gogo/protobuf)
 and add to `$PATH`.
-Otherwise [install from source.](https://github.com/google/protobuf)
+Otherwise [install from source](https://github.com/gogo/protobuf)
 1. Install Truss with
 
 	```
