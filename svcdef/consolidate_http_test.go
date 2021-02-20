@@ -12,7 +12,7 @@ import (
 func TestGetPathParams(t *testing.T) {
 	binding := &svcparse.HTTPBinding{
 		Fields: []*svcparse.Field{
-			&svcparse.Field{
+			{
 				Kind:  "get",
 				Value: `"/{a}/{b}"`,
 			},
@@ -120,7 +120,7 @@ service Map {
 		}
 	}
 	// Verify the locations of HTTPParams
-	var cases = []struct {
+	cases := []struct {
 		Name     string
 		Location string
 	}{

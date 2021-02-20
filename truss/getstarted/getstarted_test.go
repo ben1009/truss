@@ -3,7 +3,7 @@ package getstarted
 import "testing"
 
 func TestProtoInfo_FileName(t *testing.T) {
-	var cases = []struct {
+	cases := []struct {
 		alias, want string
 	}{
 		{"FooBar", "foobar.proto"},
@@ -23,7 +23,7 @@ func TestProtoInfo_FileName(t *testing.T) {
 }
 
 func TestProtoInfo_PackageName(t *testing.T) {
-	var cases = []struct {
+	cases := []struct {
 		alias, want string
 	}{
 		{"foobar", "foobar"},
@@ -43,7 +43,7 @@ func TestProtoInfo_PackageName(t *testing.T) {
 }
 
 func TestProtoInfo_ServiceName(t *testing.T) {
-	var cases = []struct {
+	cases := []struct {
 		alias, want string
 	}{
 		{"foobar", "Foobar"},

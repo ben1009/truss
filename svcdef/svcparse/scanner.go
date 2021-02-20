@@ -46,7 +46,7 @@ func (self *RuneReader) UnreadRune() error {
 }
 
 func NewRuneReader(r io.Reader) *RuneReader {
-	//contents := bytes.Runes(ioutil.ReadAll(r))
+	// contents := bytes.Runes(ioutil.ReadAll(r))
 	b, _ := ioutil.ReadAll(r)
 	contents := bytes.Runes(b)
 	return &RuneReader{
@@ -354,6 +354,7 @@ func (self *SvcScanner) UnreadUnit() error {
 
 	return nil
 }
+
 func (self *SvcScanner) UnReadToPosition(position int) error {
 	for {
 		if self.UnitPos != position {

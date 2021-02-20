@@ -571,7 +571,6 @@ func ApplyTemplate(name string, tmpl string, executor interface{}, fncs template
 // that code. If formating fails, the original source code is returned.
 func FormatCode(code string) string {
 	formatted, err := format.Source([]byte(code))
-
 	if err != nil {
 		// Set formatted to code so at least we get something to examine
 		formatted = []byte(code)

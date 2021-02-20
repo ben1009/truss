@@ -113,7 +113,7 @@ func goListDriver(cfg *Config, patterns ...string) (*driverResponse, error) {
 
 	// start fetching rootDirs
 	var info goInfo
-	var rootDirsReady, envReady = make(chan struct{}), make(chan struct{})
+	rootDirsReady, envReady := make(chan struct{}), make(chan struct{})
 	go func() {
 		info.rootDirs = determineRootDirs(cfg)
 		close(rootDirsReady)
@@ -485,7 +485,7 @@ func runNamedQueries(cfg *Config, driver driver, response *responseDeduper, quer
 		}
 		defer os.RemoveAll(tmpCfg.Dir)
 
-		if err := ioutil.WriteFile(filepath.Join(tmpCfg.Dir, "go.mod"), gomod.Bytes(), 0777); err != nil {
+		if err := ioutil.WriteFile(filepath.Join(tmpCfg.Dir, "go.mod"), gomod.Bytes(), 0o777); err != nil {
 			return fmt.Errorf("writing go.mod for module cache query: %v", err)
 		}
 

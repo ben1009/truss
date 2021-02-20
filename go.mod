@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/davecgh/go-spew v1.1.1
+	github.com/go-kit/kit v0.10.0 // indirect
 	github.com/gogo/protobuf v1.2.2-0.20190601103108-21df5aa0e680
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/pkg/errors v0.8.1

@@ -179,8 +179,8 @@ func (s transportpermutationsService) StatusCodeAndNilHeaders(ctx context.Contex
 // StatusCodeAndHeaders implements Service.
 func (s transportpermutationsService) StatusCodeAndHeaders(ctx context.Context, in *pb.Empty) (*pb.Empty, error) {
 	return nil, httpError{errors.New("test error"), http.StatusTeapot, map[string][]string{
-		"Foo":  []string{"Bar"},
-		"Test": []string{"A", "B"},
+		"Foo":  {"Bar"},
+		"Test": {"A", "B"},
 	}}
 }
 

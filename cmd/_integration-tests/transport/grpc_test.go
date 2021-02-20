@@ -1,11 +1,10 @@
 package test
 
 import (
+	"context"
 	"strings"
 	"testing"
 	"time"
-
-	"context"
 
 	"google.golang.org/grpc"
 
@@ -19,7 +18,7 @@ func init() { _ = grpcAddr }
 
 func TestCtxToCtxViaGRPCMetadata(t *testing.T) {
 	var req pb.MetaRequest
-	var key, value = "Truss-Auth-Header", "SECRET"
+	key, value := "Truss-Auth-Header", "SECRET"
 	req.Key = key
 
 	// Create a new client telling it to send "Truss-Auth-Header" as a header

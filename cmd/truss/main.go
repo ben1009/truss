@@ -285,7 +285,7 @@ func setCfg(cfg *truss.Config) error {
 
 	log.WithField("Service Packages", p).Debug()
 	cfg.ServicePackage = p[0].PkgPath
-	//cfg.ServicePath = svcPath
+	// cfg.ServicePath = svcPath
 
 	log.WithField("Service Package", cfg.ServicePackage).Debug()
 	log.WithField("package name", p[0].Name).Debug()

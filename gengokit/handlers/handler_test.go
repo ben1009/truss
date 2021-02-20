@@ -19,9 +19,11 @@ import (
 	"github.com/ben1009/truss/svcdef"
 )
 
-var gopath []string
-var diff = helper.DiffStrings
-var testFormat = helper.TestFormat
+var (
+	gopath     []string
+	diff       = helper.DiffStrings
+	testFormat = helper.TestFormat
+)
 
 func init() {
 	gopath = filepath.SplitList(os.Getenv("GOPATH"))

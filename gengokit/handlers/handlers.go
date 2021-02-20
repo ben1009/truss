@@ -113,7 +113,6 @@ func (h *handler) Render(alias string, data *gengokit.Data) (io.Reader, error) {
 
 	// render the server for all methods not already defined
 	newCode, err := applyServerMethsTempl(ex)
-
 	if err != nil {
 		return nil, err
 	}
@@ -128,7 +127,6 @@ func (h *handler) Render(alias string, data *gengokit.Data) (io.Reader, error) {
 func (h *handler) buffer() (*bytes.Buffer, error) {
 	code := bytes.NewBuffer(nil)
 	err := printer.Fprint(code, h.fset, h.ast)
-
 	if err != nil {
 		return nil, err
 	}
@@ -169,7 +167,6 @@ func (m methodMap) pruneDecls(decls []ast.Decl, svcName string) []ast.Decl {
 		default:
 			newDecls = append(newDecls, d)
 		}
-
 	}
 	return newDecls
 }
@@ -204,7 +201,7 @@ func updatePBFieldType(t ast.Expr, newType string) {
 	}
 	// pb.TYPE -> TYPE
 	if sel, _ := t.(*ast.SelectorExpr); sel != nil {
-		//pb.SOMETYPE -> pb.newType
+		// pb.SOMETYPE -> pb.newType
 		sel.Sel.Name = newType
 	}
 }

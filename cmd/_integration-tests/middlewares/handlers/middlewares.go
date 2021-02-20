@@ -16,7 +16,6 @@ import (
 // Note that the final middleware applied will be the outermost middleware
 // (i.e. applied first)
 func WrapEndpoints(in svc.Endpoints) svc.Endpoints {
-
 	// Pass in the middlewares you want applied to every endpoint.
 	// optionally pass in endpoints by name that you want to be excluded
 	// e.g.

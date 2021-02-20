@@ -44,7 +44,6 @@ func basicFromString(t *testing.T) *Svcdef {
 		}
 	`
 	sd, err := NewFromString(defStr, gopath)
-
 	if err != nil {
 		t.Fatal("Failed to create a svcdef from the definition string:", err)
 	}
@@ -54,10 +53,10 @@ func basicFromString(t *testing.T) *Svcdef {
 func TestMessages(t *testing.T) {
 	sd := basicFromString(t)
 	expected := []*Message{
-		&Message{
+		{
 			Name: "SumRequest",
 			Fields: []*Field{
-				&Field{
+				{
 					Name:        "A",
 					PBFieldName: "a",
 					Type: &FieldType{
@@ -69,7 +68,7 @@ func TestMessages(t *testing.T) {
 						ArrayType: false,
 					},
 				},
-				&Field{
+				{
 					Name:        "B",
 					PBFieldName: "b",
 					Type: &FieldType{
@@ -83,10 +82,10 @@ func TestMessages(t *testing.T) {
 				},
 			},
 		},
-		&Message{
+		{
 			Name: "SumReply",
 			Fields: []*Field{
-				&Field{
+				{
 					Name:        "V",
 					PBFieldName: "v",
 					Type: &FieldType{
@@ -98,7 +97,7 @@ func TestMessages(t *testing.T) {
 						ArrayType: false,
 					},
 				},
-				&Field{
+				{
 					Name:        "Err",
 					PBFieldName: "err",
 					Type: &FieldType{
@@ -112,7 +111,7 @@ func TestMessages(t *testing.T) {
 				},
 			},
 		},
-		&Message{
+		{
 			Name:   "UnimplementedSumSvcServer",
 			Fields: nil,
 		},
@@ -127,11 +126,11 @@ func TestMessages(t *testing.T) {
 func TestHTTPBinding(t *testing.T) {
 	sd := basicFromString(t)
 	expected := []*HTTPBinding{
-		&HTTPBinding{
+		{
 			Verb: "get",
 			Path: "/sum/{a}",
 			Params: []*HTTPParameter{
-				&HTTPParameter{
+				{
 					Location: "path",
 					Field: &Field{
 						Name:        "A",
@@ -141,7 +140,7 @@ func TestHTTPBinding(t *testing.T) {
 						},
 					},
 				},
-				&HTTPParameter{
+				{
 					Location: "query",
 					Field: &Field{
 						Name:        "B",

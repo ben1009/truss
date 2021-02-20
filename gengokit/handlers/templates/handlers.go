@@ -1,4 +1,5 @@
 package templates
+
 // TODO: fix bug, pb.Empty when change the response to empty
 const HandlerMethods = `
 {{ with $te := .}}

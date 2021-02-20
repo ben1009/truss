@@ -22,7 +22,6 @@ func NewTokenGroup(scn *SvcScanner) *TokenGroup {
 		}
 	}
 	unit, err := scn.ReadUnit()
-
 	if err != nil {
 		if err == io.EOF {
 			return &TokenGroup{EOF, string(unit), scn.GetLineNumber()}
@@ -165,6 +164,7 @@ func (self *SvcLexer) UnGetToPosition(position int) error {
 	}
 	return nil
 }
+
 func (self *SvcLexer) GetTokenIgnoreCommentAndWhitespace() (Token, string) {
 	for {
 		t, s := self.GetToken()
@@ -173,6 +173,7 @@ func (self *SvcLexer) GetTokenIgnoreCommentAndWhitespace() (Token, string) {
 		}
 	}
 }
+
 func (self *SvcLexer) getTokenIgnore(to_ignore Token) (Token, string) {
 	for {
 		t, s := self.GetToken()

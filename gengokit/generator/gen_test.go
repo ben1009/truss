@@ -306,7 +306,6 @@ func testGenerateResponseFile(templPath string, data *gengokit.Data, prev io.Rea
 // formated copy of that code.
 func testFormat(code string) (string, error) {
 	formatted, err := format.Source([]byte(code))
-
 	if err != nil {
 		return code, err
 	}

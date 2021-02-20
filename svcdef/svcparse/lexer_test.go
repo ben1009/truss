@@ -7,11 +7,12 @@ import (
 )
 
 func TestScanReadUnit(t *testing.T) {
-
 	r := strings.NewReader("what\nservice service Test{}")
 	scn := NewSvcScanner(r)
-	for _, good := range []string{"what", "\n", "service",
-		" ", "service", " ", "Test", "{", "}"} {
+	for _, good := range []string{
+		"what", "\n", "service",
+		" ", "service", " ", "Test", "{", "}",
+	} {
 		group, err := scn.ReadUnit()
 		if err != nil {
 			t.Fatalf("ReadUnit returned err: %v\n", err)
@@ -241,7 +242,6 @@ func TestLextUnGetToken(t *testing.T) {
 			t.Fatalf("%v returned token '%v' differs from expected token '%v'\n", i, str, good_str)
 		}
 	}
-
 }
 
 func TestLexNewlines(t *testing.T) {

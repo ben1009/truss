@@ -114,7 +114,7 @@ func (m *mmapper) Mmap(fd int, offset int64, length int, prot int, flags int) (d
 	}
 
 	// Slice memory layout
-	var sl = struct {
+	sl := struct {
 		addr uintptr
 		len  int
 		cap  int
@@ -326,7 +326,7 @@ func SetsockoptByte(fd, level, opt int, value byte) (err error) {
 }
 
 func SetsockoptInt(fd, level, opt int, value int) (err error) {
-	var n = int32(value)
+	n := int32(value)
 	return setsockopt(fd, level, opt, unsafe.Pointer(&n), 4)
 }
 

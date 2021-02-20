@@ -126,6 +126,7 @@ type OneofProperties struct {
 // See encode.go, (*Buffer).enc_struct.
 
 func (sp *StructProperties) Len() int { return len(sp.order) }
+
 func (sp *StructProperties) Less(i, j int) bool {
 	return sp.Prop[sp.order[i]].Tag < sp.Prop[sp.order[j]].Tag
 }
@@ -353,9 +354,7 @@ func (p *Properties) setTag(lockGetProp bool) {
 	}
 }
 
-var (
-	marshalerType = reflect.TypeOf((*Marshaler)(nil)).Elem()
-)
+var marshalerType = reflect.TypeOf((*Marshaler)(nil)).Elem()
 
 // Init populates the properties from a protocol buffer struct tag.
 func (p *Properties) Init(typ reflect.Type, name, tag string, f *reflect.StructField) {
@@ -499,8 +498,10 @@ func getPropertiesLocked(t reflect.Type) *StructProperties {
 // A global registry of enum types.
 // The generated code will register the generated maps by calling RegisterEnum.
 
-var enumValueMaps = make(map[string]map[string]int32)
-var enumStringMaps = make(map[string]map[int32]string)
+var (
+	enumValueMaps  = make(map[string]map[string]int32)
+	enumStringMaps = make(map[string]map[int32]string)
+)
 
 // RegisterEnum is called from the generated code to install the enum descriptor
 // maps into the global table to aid parsing text format protocol buffers.

@@ -16,7 +16,6 @@ import (
 // GeneratePBDotGo creates .pb.go files from the passed protoPaths and writes
 // them to outDir.
 func GeneratePBDotGo(protoPaths, gopath []string, outDir string) error {
-
 	genGoCode := "--gogofaster_out=" +
 		"Mgoogle/protobuf/any.proto=github.com/gogo/protobuf/types," +
 		"Mgoogle/protobuf/duration.proto=github.com/gogo/protobuf/types," +

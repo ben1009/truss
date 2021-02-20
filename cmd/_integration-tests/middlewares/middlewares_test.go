@@ -1,10 +1,9 @@
 package test
 
 import (
+	"context"
 	"fmt"
 	"testing"
-
-	"context"
 
 	pb "github.com/ben1009/truss/cmd/_integration-tests/middlewares/proto"
 )

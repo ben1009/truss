@@ -19,7 +19,7 @@ func TestGenClientEncode(t *testing.T) {
 		BasePath:     "/sum/",
 		Verb:         "get",
 		Fields: []*Field{
-			&Field{
+			{
 				Name:           "a",
 				CamelName:      "A",
 				LowCamelName:   "a",
@@ -30,7 +30,7 @@ func TestGenClientEncode(t *testing.T) {
 				ConvertFunc:    "ASum, err := strconv.ParseInt(ASumStr, 10, 64)",
 				IsBaseType:     true,
 			},
-			&Field{
+			{
 				Name:           "b",
 				CamelName:      "B",
 				LowCamelName:   "b",
@@ -109,7 +109,7 @@ func TestGenServerDecode(t *testing.T) {
 		BasePath:     "/sum/",
 		Verb:         "get",
 		Fields: []*Field{
-			&Field{
+			{
 				Name:                       "a",
 				QueryParamName:             "a",
 				CamelName:                  "A",
@@ -122,7 +122,7 @@ func TestGenServerDecode(t *testing.T) {
 				TypeConversion:             "ASum",
 				IsBaseType:                 true,
 			},
-			&Field{
+			{
 				Name:                       "b",
 				QueryParamName:             "b",
 				CamelName:                  "B",
