@@ -263,7 +263,7 @@ func buildTestService(serviceDir string) (err error) {
 	}
 
 	binDir := serviceDir + "/bin"
-	err = os.MkdirAll(binDir, 0755)
+	err = os.MkdirAll(binDir, 0o755)
 	if err != nil {
 		return err
 	}
