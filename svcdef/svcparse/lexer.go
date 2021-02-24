@@ -7,7 +7,7 @@ import (
 	"unicode"
 )
 
-func NewTokenGroup(scn *SvcScanner) *TokenGroup {
+func newTokenGroup(scn *SvcScanner) *TokenGroup {
 	// Since FastForward won't take us out of a service definition we're
 	// already within, we can safely call it every time we attempt to get a
 	// token
@@ -25,10 +25,10 @@ func NewTokenGroup(scn *SvcScanner) *TokenGroup {
 	if err != nil {
 		if err == io.EOF {
 			return &TokenGroup{EOF, string(unit), scn.GetLineNumber()}
-		} else {
-			return &TokenGroup{ILLEGAL, fmt.Sprint(err), scn.GetLineNumber()}
 		}
+		return &TokenGroup{ILLEGAL, fmt.Sprint(err), scn.GetLineNumber()}
 	}
+
 	switch {
 	case len(unit) == 0:
 		return &TokenGroup{ILLEGAL, "", scn.GetLineNumber()}
@@ -91,11 +91,12 @@ func NewTokenGroup(scn *SvcScanner) *TokenGroup {
 	}
 }
 
+// NewSvcLexer ...
 func NewSvcLexer(r io.Reader) *SvcLexer {
 	b := make([]*TokenGroup, 0)
 	scn := NewSvcScanner(r)
 	for {
-		grp := NewTokenGroup(scn)
+		grp := newTokenGroup(scn)
 		if grp.token != ILLEGAL && grp.token != EOF {
 			b = append(b, grp)
 		} else {
@@ -109,6 +110,7 @@ func NewSvcLexer(r io.Reader) *SvcLexer {
 	}
 }
 
+// SvcLexer ...
 type SvcLexer struct {
 	Scn    *SvcScanner
 	Buf    []*TokenGroup
@@ -116,25 +118,28 @@ type SvcLexer struct {
 	lineNo int
 }
 
-func (self *SvcLexer) GetPosition() int {
-	return self.tkPos
+// GetPosition ...
+func (lexer *SvcLexer) GetPosition() int {
+	return lexer.tkPos
 }
 
-func (self *SvcLexer) GetLineNumber() int {
-	return self.lineNo
+// GetLineNumber ...
+func (lexer *SvcLexer) GetLineNumber() int {
+	return lexer.lineNo
 }
 
-func (self *SvcLexer) GetToken() (Token, string) {
+// GetToken ...
+func (lexer *SvcLexer) GetToken() (Token, string) {
 	var tk Token
 	var val string
 
-	if self.tkPos < len(self.Buf) {
-		grp := self.Buf[self.tkPos]
-		self.lineNo = grp.line
+	if lexer.tkPos < len(lexer.Buf) {
+		grp := lexer.Buf[lexer.tkPos]
+		lexer.lineNo = grp.line
 		tk = grp.token
 		val = grp.value
 
-		self.tkPos += 1
+		lexer.tkPos++
 	} else {
 		tk = EOF
 	}
@@ -142,19 +147,21 @@ func (self *SvcLexer) GetToken() (Token, string) {
 	return tk, val
 }
 
-func (self *SvcLexer) UnGetToken() error {
-	if self.tkPos == 0 {
+// UnGetToken ...
+func (lexer *SvcLexer) UnGetToken() error {
+	if lexer.tkPos == 0 {
 		return fmt.Errorf("Cannot unread when Lexer is at start of input")
 	}
-	self.tkPos -= 1
-	self.lineNo = self.Buf[self.tkPos].line
+	lexer.tkPos--
+	lexer.lineNo = lexer.Buf[lexer.tkPos].line
 	return nil
 }
 
-func (self *SvcLexer) UnGetToPosition(position int) error {
+// UnGetToPosition ...
+func (lexer *SvcLexer) UnGetToPosition(position int) error {
 	for {
-		if self.GetPosition() != position {
-			err := self.UnGetToken()
+		if lexer.GetPosition() != position {
+			err := lexer.UnGetToken()
 			if err != nil {
 				return err
 			}
@@ -165,24 +172,26 @@ func (self *SvcLexer) UnGetToPosition(position int) error {
 	return nil
 }
 
-func (self *SvcLexer) GetTokenIgnoreCommentAndWhitespace() (Token, string) {
+// GetTokenIgnoreCommentAndWhitespace ...
+func (lexer *SvcLexer) GetTokenIgnoreCommentAndWhitespace() (Token, string) {
 	for {
-		t, s := self.GetToken()
+		t, s := lexer.GetToken()
 		if t != COMMENT && t != WHITESPACE {
 			return t, s
 		}
 	}
 }
 
-func (self *SvcLexer) getTokenIgnore(to_ignore Token) (Token, string) {
+func (lexer *SvcLexer) getTokenIgnore(to_ignore Token) (Token, string) {
 	for {
-		t, s := self.GetToken()
+		t, s := lexer.GetToken()
 		if t != to_ignore {
 			return t, s
 		}
 	}
 }
 
-func (self *SvcLexer) GetTokenIgnoreWhitespace() (Token, string) {
-	return self.getTokenIgnore(WHITESPACE)
+// GetTokenIgnoreWhitespace ...
+func (lexer *SvcLexer) GetTokenIgnoreWhitespace() (Token, string) {
+	return lexer.getTokenIgnore(WHITESPACE)
 }

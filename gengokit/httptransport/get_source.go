@@ -56,9 +56,9 @@ func AllFuncSourceCode(val interface{}) (string, error) {
 	ptr := reflect.ValueOf(val).Pointer()
 	fpath, _ := runtime.FuncForPC(ptr).FileLine(ptr)
 
-	funcName := runtime.FuncForPC(ptr).Name()
-	parts := strings.Split(funcName, ".")
-	funcName = parts[len(parts)-1]
+	//funcName := runtime.FuncForPC(ptr).Name()
+	//parts := strings.Split(funcName, ".")
+	//funcName = parts[len(parts)-1]
 
 	// Parse the go file into the ast
 	fset := token.NewFileSet()

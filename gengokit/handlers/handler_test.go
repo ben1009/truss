@@ -33,7 +33,7 @@ func init() {
 	log.SetLevel(log.DebugLevel)
 }
 
-func testServerMethsTempl(t *testing.T) {
+func TestServerMethsTempl(t *testing.T) {
 	const def = `
 		syntax = "proto3";
 
@@ -127,7 +127,7 @@ func TestApplyServerTempl(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	te, err := gengokit.NewData(sd, conf)
+	te, _ := gengokit.NewData(sd, conf)
 
 	gen, _ := applyServerTempl(te)
 	genBytes, _ := ioutil.ReadAll(gen)

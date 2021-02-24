@@ -1,17 +1,17 @@
 # .golangci.yml
 linters:
-  disable-all: false
+  disable-all: true
   enable:
     - goimports
-    - golint
-    #- misspell
+#    - golint
+#    - misspell
     - ineffassign
-    - deadcode
-    - errcheck
+#    - deadcode
+#    - errcheck
     - gosimple
     - staticcheck
     - typecheck
-    - unused
+#    - unused
     - varcheck
     - structcheck
 issues:
