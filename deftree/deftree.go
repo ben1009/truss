@@ -15,7 +15,6 @@ package deftree
 
 import (
 	"fmt"
-	"strings"
 )
 
 // prindent is a utility function for creating a formatted string with a given
@@ -30,22 +29,22 @@ func prindent(depth int, format string, args ...interface{}) string {
 
 // strRepeat takes a string and an int `n` and returns a string representing
 // the input repeated `n` times.
-func strRepeat(in string, count int) string {
-	rv := ""
-	for ; count > 0; count-- {
-		rv += in
-	}
-	return rv
-}
+//func strRepeat(in string, count int) string {
+//	rv := ""
+//	for ; count > 0; count-- {
+//		rv += in
+//	}
+//	return rv
+//}
 
-func nameLink(in string) string {
-	if !strings.Contains(in, ".") {
-		return in
-	}
-	split := strings.Split(in, ".")
-	name := split[len(split)-1]
-	return fmt.Sprintf("[%v](#%v)", name, name)
-}
+//func nameLink(in string) string {
+//	if !strings.Contains(in, ".") {
+//		return in
+//	}
+//	split := strings.Split(in, ".")
+//	name := split[len(split)-1]
+//	return fmt.Sprintf("[%v](#%v)", name, name)
+//}
 
 // Describable offers an interface for traversing a Deftree and finding
 // information from the nodes within it.
@@ -82,13 +81,13 @@ func genericDescribe(self Describable, depth int) string {
 	return rv
 }
 
-func genericDescribeMarkdown(self Describable, depth int) string {
-	rv := prindent(0, "%v %v\n\n", strRepeat("#", depth), self.GetName())
-	if len(self.GetDescription()) > 1 {
-		rv += prindent(0, "%v\n\n", self.GetDescription())
-	}
-	return rv
-}
+//func genericDescribeMarkdown(self Describable, depth int) string {
+//	rv := prindent(0, "%v %v\n\n", strRepeat("#", depth), self.GetName())
+//	if len(self.GetDescription()) > 1 {
+//		rv += prindent(0, "%v\n\n", self.GetDescription())
+//	}
+//	return rv
+//}
 
 // MicroserviceDefinition is the root node for any particular `Deftree`
 type MicroserviceDefinition struct {
@@ -593,7 +592,7 @@ func (self *BindingField) Describe(depth int) string {
 // is created by contextualizing all of the `BindingField`'s within a
 // `MethodHttpBinding`, with each `HttpParameter` corresponding to one of the
 // fields in the input message for the given rpc method. It's type is the
-// protobuf type of the field of the struct it's refering to.
+// protobuf type of the field of the struct it's referring to.
 type HttpParameter struct {
 	Describable
 	Name        string

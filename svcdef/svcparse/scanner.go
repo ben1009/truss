@@ -224,13 +224,13 @@ func BuildScanUnit(rr *RuneReader) (*ScanUnit, error) {
 		}
 	case ch == '{':
 		braceLev += 1
-		if withinDef == true {
+		if withinDef {
 			withinDef = false
 			withinBody = true
 		}
 	case ch == '}':
 		braceLev -= 1
-		if withinBody == true && braceLev == 0 {
+		if withinBody && braceLev == 0 {
 			withinBody = false
 		}
 	}

@@ -8,7 +8,6 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
-	"path"
 	"path/filepath"
 	"strings"
 
@@ -49,7 +48,7 @@ func New(req *plugin.CodeGeneratorRequest, serviceFile io.Reader) (Deftree, erro
 		if file.GetPackage() != findDeftreePackage(req) {
 			continue
 		}
-		// This is a file we are meant to examine, so contine with its creation
+		// This is a file we are meant to examine, so continue with its creation
 		// in the Deftree
 		newFile, err := NewFile(file, &dt)
 		if err != nil {
@@ -354,18 +353,18 @@ func getCorrectTypeName(p *descriptor.FieldDescriptorProto) string {
 }
 
 // Searches all descendent directories for a file with name `fname`.
-func searchFileName(fname string) string {
-	fname = path.Base(fname)
-	foundPath := ""
-	visitor := func(path string, info os.FileInfo, err error) error {
-		if info.Name() == fname {
-			foundPath = path
-		}
-		return nil
-	}
-	_ = filepath.Walk("./", visitor)
-	return foundPath
-}
+//func searchFileName(fname string) string {
+//	fname = path.Base(fname)
+//	foundPath := ""
+//	visitor := func(path string, info os.FileInfo, err error) error {
+//		if info.Name() == fname {
+//			foundPath = path
+//		}
+//		return nil
+//	}
+//	_ = filepath.Walk("./", visitor)
+//	return foundPath
+//}
 
 // convertSvcparse converts the structures returned by the service parser into
 // the equivalent representation as deftree structures. At this time,
