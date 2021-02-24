@@ -33,7 +33,7 @@ func init() {
 	log.SetLevel(log.DebugLevel)
 }
 
-func testServerMethsTempl(t *testing.T) {
+func TestServerMethsTempl(t *testing.T) {
 	const def = `
 		syntax = "proto3";
 
@@ -76,7 +76,7 @@ func testServerMethsTempl(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	genBytes, err := ioutil.ReadAll(gen)
+	genBytes, _ := ioutil.ReadAll(gen)
 	const expected = `
 		func (s protoService) ProtoMethod(ctx context.Context, in *pb.RequestMessage) (*pb.ResponseMessage, error){
 			var resp pb.ResponseMessage
@@ -127,10 +127,10 @@ func TestApplyServerTempl(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	te, err := gengokit.NewData(sd, conf)
+	te, _ := gengokit.NewData(sd, conf)
 
-	gen, err := applyServerTempl(te)
-	genBytes, err := ioutil.ReadAll(gen)
+	gen, _ := applyServerTempl(te)
+	genBytes, _ := ioutil.ReadAll(gen)
 	expected := `
 		package handlers
 

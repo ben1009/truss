@@ -60,23 +60,18 @@ type bindataFileInfo struct {
 func (fi bindataFileInfo) Name() string {
 	return fi.name
 }
-
 func (fi bindataFileInfo) Size() int64 {
 	return fi.size
 }
-
 func (fi bindataFileInfo) Mode() os.FileMode {
 	return fi.mode
 }
-
 func (fi bindataFileInfo) ModTime() time.Time {
 	return fi.modTime
 }
-
 func (fi bindataFileInfo) IsDir() bool {
 	return false
 }
-
 func (fi bindataFileInfo) Sys() interface{} {
 	return nil
 }
@@ -313,15 +308,15 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"client/grpc/client.gotemplate":    clientGrpcClientGotemplate,
-	"client/http/client.gotemplate":    clientHttpClientGotemplate,
-	"cmd/server/main.gotemplate":       cmdServerMainGotemplate,
-	"svc/endpoints.gotemplate":         svcEndpointsGotemplate,
+	"client/grpc/client.gotemplate": clientGrpcClientGotemplate,
+	"client/http/client.gotemplate": clientHttpClientGotemplate,
+	"cmd/server/main.gotemplate": cmdServerMainGotemplate,
+	"svc/endpoints.gotemplate": svcEndpointsGotemplate,
 	"svc/handlers/handlers.gotemplate": svcHandlersHandlersGotemplate,
-	"svc/handlers/hooks.gotemplate":    svcHandlersHooksGotemplate,
-	"svc/serve.gotemplate":             svcServeGotemplate,
-	"svc/transport_grpc.gotemplate":    svcTransport_grpcGotemplate,
-	"svc/transport_http.gotemplate":    svcTransport_httpGotemplate,
+	"svc/handlers/hooks.gotemplate": svcHandlersHooksGotemplate,
+	"svc/serve.gotemplate": svcServeGotemplate,
+	"svc/transport_grpc.gotemplate": svcTransport_grpcGotemplate,
+	"svc/transport_http.gotemplate": svcTransport_httpGotemplate,
 }
 
 // AssetDir returns the file names below a certain
@@ -363,30 +358,29 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
-
 var _bintree = &bintree{nil, map[string]*bintree{
-	"client": {nil, map[string]*bintree{
-		"grpc": {nil, map[string]*bintree{
-			"client.gotemplate": {clientGrpcClientGotemplate, map[string]*bintree{}},
+	"client": &bintree{nil, map[string]*bintree{
+		"grpc": &bintree{nil, map[string]*bintree{
+			"client.gotemplate": &bintree{clientGrpcClientGotemplate, map[string]*bintree{}},
 		}},
-		"http": {nil, map[string]*bintree{
-			"client.gotemplate": {clientHttpClientGotemplate, map[string]*bintree{}},
-		}},
-	}},
-	"cmd": {nil, map[string]*bintree{
-		"server": {nil, map[string]*bintree{
-			"main.gotemplate": {cmdServerMainGotemplate, map[string]*bintree{}},
+		"http": &bintree{nil, map[string]*bintree{
+			"client.gotemplate": &bintree{clientHttpClientGotemplate, map[string]*bintree{}},
 		}},
 	}},
-	"svc": {nil, map[string]*bintree{
-		"endpoints.gotemplate": {svcEndpointsGotemplate, map[string]*bintree{}},
-		"handlers": {nil, map[string]*bintree{
-			"handlers.gotemplate": {svcHandlersHandlersGotemplate, map[string]*bintree{}},
-			"hooks.gotemplate":    {svcHandlersHooksGotemplate, map[string]*bintree{}},
+	"cmd": &bintree{nil, map[string]*bintree{
+		"server": &bintree{nil, map[string]*bintree{
+			"main.gotemplate": &bintree{cmdServerMainGotemplate, map[string]*bintree{}},
 		}},
-		"serve.gotemplate":          {svcServeGotemplate, map[string]*bintree{}},
-		"transport_grpc.gotemplate": {svcTransport_grpcGotemplate, map[string]*bintree{}},
-		"transport_http.gotemplate": {svcTransport_httpGotemplate, map[string]*bintree{}},
+	}},
+	"svc": &bintree{nil, map[string]*bintree{
+		"endpoints.gotemplate": &bintree{svcEndpointsGotemplate, map[string]*bintree{}},
+		"handlers": &bintree{nil, map[string]*bintree{
+			"handlers.gotemplate": &bintree{svcHandlersHandlersGotemplate, map[string]*bintree{}},
+			"hooks.gotemplate": &bintree{svcHandlersHooksGotemplate, map[string]*bintree{}},
+		}},
+		"serve.gotemplate": &bintree{svcServeGotemplate, map[string]*bintree{}},
+		"transport_grpc.gotemplate": &bintree{svcTransport_grpcGotemplate, map[string]*bintree{}},
+		"transport_http.gotemplate": &bintree{svcTransport_httpGotemplate, map[string]*bintree{}},
 	}},
 }}
 
@@ -400,7 +394,7 @@ func RestoreAsset(dir, name string) error {
 	if err != nil {
 		return err
 	}
-	err = os.MkdirAll(_filePath(dir, filepath.Dir(name)), os.FileMode(0o755))
+	err = os.MkdirAll(_filePath(dir, filepath.Dir(name)), os.FileMode(0755))
 	if err != nil {
 		return err
 	}
@@ -436,3 +430,4 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
+

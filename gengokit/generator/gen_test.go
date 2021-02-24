@@ -132,8 +132,8 @@ func stringToTemplateExector(def, importPath string) (*gengokit.Data, error) {
 }
 
 func TestAllTemplates(t *testing.T) {
-	const goPackage = "github.com/ben1009/truss/gengokit"
-	const goPBPackage = "github.com/ben1009/truss/gengokit/generalservice"
+	//const goPackage = "github.com/ben1009/truss/gengokit"
+	//const goPBPackage = "github.com/ben1009/truss/gengokit/generalservice"
 
 	const def = `
 		syntax = "proto3";
@@ -165,42 +165,42 @@ func TestAllTemplates(t *testing.T) {
 		}
 	`
 
-	const def2 = `
-		syntax = "proto3";
-
-		// General package
-		package general;
-
-		import "github.com/ben1009/truss/deftree/googlethirdparty/annotations.proto";
-
-		// RequestMessage is so foo
-		message RequestMessage {
-			string input = 1;
-		}
-
-		// ResponseMessage is so bar
-		message ResponseMessage {
-			string output = 1;
-		}
-
-		// ProtoService is a service
-		service ProtoService {
-			// ProtoMethod is simple. Like a gopher.
-			rpc ProtoMethod (RequestMessage) returns (ResponseMessage) {
-				// No {} in path and no body, everything is in the query
-				option (google.api.http) = {
-					get: "/route"
-				};
-			}
-			// ProtoMethodAgain is simple. Like a gopher again.
-			rpc ProtoMethodAgain (RequestMessage) returns (ResponseMessage) {
-				// No {} in path and no body, everything is in the query
-				option (google.api.http) = {
-					get: "/route2"
-				};
-			}
-		}
-	`
+	//const def2 = `
+	//	syntax = "proto3";
+	//
+	//	// General package
+	//	package general;
+	//
+	//	import "github.com/ben1009/truss/deftree/googlethirdparty/annotations.proto";
+	//
+	//	// RequestMessage is so foo
+	//	message RequestMessage {
+	//		string input = 1;
+	//	}
+	//
+	//	// ResponseMessage is so bar
+	//	message ResponseMessage {
+	//		string output = 1;
+	//	}
+	//
+	//	// ProtoService is a service
+	//	service ProtoService {
+	//		// ProtoMethod is simple. Like a gopher.
+	//		rpc ProtoMethod (RequestMessage) returns (ResponseMessage) {
+	//			// No {} in path and no body, everything is in the query
+	//			option (google.api.http) = {
+	//				get: "/route"
+	//			};
+	//		}
+	//		// ProtoMethodAgain is simple. Like a gopher again.
+	//		rpc ProtoMethodAgain (RequestMessage) returns (ResponseMessage) {
+	//			// No {} in path and no body, everything is in the query
+	//			option (google.api.http) = {
+	//				get: "/route2"
+	//			};
+	//		}
+	//	}
+	//`
 
 	sd1, err := svcdef.NewFromString(def, gopath)
 	if err != nil {

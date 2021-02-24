@@ -397,7 +397,7 @@ func readPreviousGeneration(serviceDir string) (map[string]io.Reader, error) {
 
 	files := make(map[string]io.Reader)
 
-	addFileToFiles := func(path string, info os.FileInfo, err error) error {
+	addFileToFiles := func(path string, info os.FileInfo, errF error) error {
 		if info.IsDir() {
 			switch info.Name() {
 			// Only files within the handlers dir are used to

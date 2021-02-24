@@ -1,4 +1,4 @@
-// Svcparse, which stands for "service parser" will parse the 'service'
+// Package svcparse, which stands for "service parser" will parse the 'service'
 // declarations within a provided protobuf and associate comments within that
 // file with the various components of the service. Specifically, it handles
 // google's httpoptions and the association of those comments. This is
@@ -358,7 +358,7 @@ func ParseMethod(lex *SvcLexer) (*Method, error) {
 		}
 	}
 
-	bindings, err := ParseHttpBindings(lex)
+	bindings, err := parseHttpBindings(lex)
 	if err != nil {
 		return nil, err
 	}
@@ -391,9 +391,9 @@ func ParseMethod(lex *SvcLexer) (*Method, error) {
 	return toret, nil
 }
 
-func ParseHttpBindings(lex *SvcLexer) ([]*HTTPBinding, error) {
+func parseHttpBindings(lex *SvcLexer) ([]*HTTPBinding, error) {
 	rv := make([]*HTTPBinding, 0)
-	new_opt := &HTTPBinding{}
+	newOpt := &HTTPBinding{}
 
 	tk, val := lex.GetTokenIgnoreWhitespace()
 	// If there's a comment before the declaration of a new HttpBinding, then
@@ -407,7 +407,7 @@ func ParseHttpBindings(lex *SvcLexer) ([]*HTTPBinding, error) {
 	// basis for association.
 	for {
 		if tk == COMMENT {
-			new_opt.Description = val
+			newOpt.Description = val
 			tk, val = lex.GetTokenIgnoreWhitespace()
 		} else if tk == EOF || tk == ILLEGAL {
 			return nil, parserErr{
@@ -426,28 +426,28 @@ func ParseHttpBindings(lex *SvcLexer) ([]*HTTPBinding, error) {
 		if err != nil {
 			return nil, err
 		}
-		fields, custom, err := ParseBindingFields(lex)
+		fields, custom, err := parseBindingFields(lex)
 		if err != nil {
 			return nil, err
 		}
-		new_opt.Fields = fields
-		new_opt.CustomHTTPPattern = custom
-		good_position := lex.GetPosition()
+		newOpt.Fields = fields
+		newOpt.CustomHTTPPattern = custom
+		goodPosition := lex.GetPosition()
 
 		tk, val = lex.GetTokenIgnoreWhitespace()
 		for {
 			if tk == CLOSE_BRACE {
-				return append(rv, new_opt), nil
+				return append(rv, newOpt), nil
 			} else if tk == COMMENT {
-				good_position = lex.GetPosition()
+				goodPosition = lex.GetPosition()
 			} else if val == "additional_bindings" {
-				lex.UnGetToPosition(good_position)
-				more_bindings, err := ParseHttpBindings(lex)
+				lex.UnGetToPosition(goodPosition)
+				moreBindings, err := parseHttpBindings(lex)
 				if err != nil {
 					return nil, err
 				}
-				rv = append(rv, more_bindings...)
-				good_position = lex.GetPosition()
+				rv = append(rv, moreBindings...)
+				goodPosition = lex.GetPosition()
 			} else if tk == EOF || tk == ILLEGAL {
 				return nil, parserErr{
 					expected: "legal token while parsing HttpBindings",
@@ -468,17 +468,17 @@ func ParseHttpBindings(lex *SvcLexer) ([]*HTTPBinding, error) {
 		if err != nil {
 			return nil, err
 		}
-		fields, custom, err := ParseBindingFields(lex)
+		fields, custom, err := parseBindingFields(lex)
 		if err != nil {
 			return nil, err
 		}
-		new_opt.Fields = fields
-		new_opt.CustomHTTPPattern = custom
+		newOpt.Fields = fields
+		newOpt.CustomHTTPPattern = custom
 		err = fastForwardTill(lex, "}")
 		if err != nil {
 			return nil, err
 		}
-		return append(rv, new_opt), nil
+		return append(rv, newOpt), nil
 	case val == "}":
 		// End of RPC
 		return nil, nil
@@ -489,7 +489,7 @@ func ParseHttpBindings(lex *SvcLexer) ([]*HTTPBinding, error) {
 	return nil, optErr
 }
 
-func ParseBindingFields(lex *SvcLexer) (fields []*Field, custom []*Field, err error) {
+func parseBindingFields(lex *SvcLexer) (fields []*Field, custom []*Field, err error) {
 	field := &Field{}
 	for {
 		tk, val := lex.GetTokenIgnoreWhitespace()
@@ -523,7 +523,7 @@ func ParseBindingFields(lex *SvcLexer) (fields []*Field, custom []*Field, err er
 			}
 			// Since there cannot be a custom within a custom, we ignore custom
 			// values returned from a recursive parsing of more fields
-			c, _, err := ParseBindingFields(lex)
+			c, _, err := parseBindingFields(lex)
 			if err != nil {
 				return nil, nil, errors.Wrap(err, "cannot parse custom binding fields")
 			}

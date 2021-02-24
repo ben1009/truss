@@ -81,12 +81,18 @@ func FromReaders(gopath []string, protoDefReaders []io.Reader) (string, error) {
 	protoDefPaths := []string{}
 	for _, rdr := range protoDefReaders {
 		f, err := ioutil.TempFile(protoDir, "parsesvcname-fromreader")
+		if err != nil {
+			return "", errors.Wrap(err, "TempFile fail: ")
+		}
 		_, err = io.Copy(f, rdr)
 		if err != nil {
 			return "", errors.Wrap(err, "couldn't copy contents of our proto file into the os.File: ")
 		}
 		path := f.Name()
-		f.Close()
+		err = f.Close()
+		if err != nil {
+			return "", errors.Wrap(err, "Close fail: ")
+		}
 		protoDefPaths = append(protoDefPaths, path)
 	}
 	return FromPaths(gopath, protoDefPaths)

@@ -49,7 +49,7 @@ func TestPostBodyParams(t *testing.T) {
 	// with `Name` fields which match the ones specified within the
 	// BindingFields of the HttpBindings. However, since the `Name` field of
 	// pretty much all the types in the Deftree module are actually fields on
-	// embeded structs which aren't exported, we can't define the `Name` fields
+	// embedded structs which aren't exported, we can't define the `Name` fields
 	// of MessageField types inline. For this reason, the MessageFields are
 	// defined above, but their names are set in the for loop below.
 	for count, field := range msg.Fields {
@@ -90,7 +90,7 @@ func TestPostBodyParams(t *testing.T) {
 		},
 	}
 
-	Assemble(md)
+	_ = Assemble(md)
 
 	params := md.Files[0].Services[0].Methods[0].HttpBindings[0].Params
 	if len(params) != 3 {

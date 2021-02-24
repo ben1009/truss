@@ -1,0 +1,23 @@
+# .golangci.yml
+linters:
+  disable-all: true
+  enable:
+    - goimports
+#    - golint
+#    - misspell
+    - ineffassign
+#    - deadcode
+#    - errcheck
+    - gosimple
+    - staticcheck
+    - typecheck
+#    - unused
+    - varcheck
+    - structcheck
+issues:
+  exclude-use-default: false
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+        - ineffassign

@@ -81,8 +81,6 @@ func DiffGoCode(inA, inB string) (outA, outB, diff string) {
 		} else {
 			return string(outBytes)
 		}
-
-		return out
 	}
 	outA = codeFormat(inA)
 	outB = codeFormat(inB)

@@ -32,11 +32,10 @@ func FuncSourceCode(val interface{}) (string, error) {
 	// Search ast for function declaration with name of function passed
 	var fAst *ast.FuncDecl
 	for _, decs := range fileAst.Decls {
-		switch decs.(type) {
+		switch d := decs.(type) {
 		case *ast.FuncDecl:
-			f := decs.(*ast.FuncDecl)
-			if f.Name.String() == funcName {
-				fAst = f
+			if d.Name.String() == funcName {
+				fAst = d
 			}
 		}
 	}
@@ -57,9 +56,9 @@ func AllFuncSourceCode(val interface{}) (string, error) {
 	ptr := reflect.ValueOf(val).Pointer()
 	fpath, _ := runtime.FuncForPC(ptr).FileLine(ptr)
 
-	funcName := runtime.FuncForPC(ptr).Name()
-	parts := strings.Split(funcName, ".")
-	funcName = parts[len(parts)-1]
+	//funcName := runtime.FuncForPC(ptr).Name()
+	//parts := strings.Split(funcName, ".")
+	//funcName = parts[len(parts)-1]
 
 	// Parse the go file into the ast
 	fset := token.NewFileSet()
@@ -71,10 +70,9 @@ func AllFuncSourceCode(val interface{}) (string, error) {
 	// Search ast for all function declarations
 	fncSlc := []*ast.FuncDecl{}
 	for _, decs := range fileAst.Decls {
-		switch decs.(type) {
+		switch d := decs.(type) {
 		case *ast.FuncDecl:
-			f := decs.(*ast.FuncDecl)
-			fncSlc = append(fncSlc, f)
+			fncSlc = append(fncSlc, d)
 		}
 	}
 
