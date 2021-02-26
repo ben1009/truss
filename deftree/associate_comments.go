@@ -214,13 +214,13 @@ func scrubComments(comment string) string {
 	comment = strings.Replace(comment, "\n/ ", "\n", -1)
 	comment = strings.Replace(comment, "\n/", "\n", -1)
 
-	beginning_slash := regexp.MustCompile(`^/*\\s*`)
-	trailing_whitespace := regexp.MustCompile(`\\s*$`)
-	line_trail_ws := regexp.MustCompile("\\s+\n")
+	beginningSlash := regexp.MustCompile(`^/*\\s*`)
+	trailingWhitespace := regexp.MustCompile(`\\s*$`)
+	lineTrailWs := regexp.MustCompile(`\\s+\n`)
 
-	comment = beginning_slash.ReplaceAllString(comment, "")
-	comment = trailing_whitespace.ReplaceAllString(comment, "")
-	comment = line_trail_ws.ReplaceAllString(comment, "\n")
+	comment = beginningSlash.ReplaceAllString(comment, "")
+	comment = trailingWhitespace.ReplaceAllString(comment, "")
+	comment = lineTrailWs.ReplaceAllString(comment, "\n")
 
 	return comment
 }
