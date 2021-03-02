@@ -7,7 +7,7 @@ require (
 	github.com/go-kit/kit v0.10.0 // indirect
 	github.com/gogo/protobuf v1.2.2-0.20190601103108-21df5aa0e680
 	github.com/kr/pretty v0.1.0 // indirect
-	github.com/pkg/errors v0.8.1
+	github.com/pkg/errors v0.9.1
 	github.com/pmezard/go-difflib v1.0.0
 	github.com/sirupsen/logrus v1.4.2
 	github.com/spf13/pflag v1.0.5
