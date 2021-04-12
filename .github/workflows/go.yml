@@ -72,7 +72,10 @@ jobs:
           #          flags: unittests
           #          name: codecov-unittests
           #          fail_ci_if_error: true
+      - name: Convert coverage to lcov
+        uses: jandelgado/gcov2lcov-action@v1.0.8
       - name: Coveralls
         uses: coverallsapp/github-action@v1.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: coverage.lcov
