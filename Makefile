@@ -29,6 +29,9 @@ test-go:
 	#GO111MODULE=on go test -v ./... -covermode=atomic -coverprofile=./coverage.out --coverpkg=./...
 	GO111MODULE=on go test -v ./...
 
+test-cov:
+	GO111MODULE=on go test -v ./... -covermode=atomic -coverprofile=./coverage.out #--coverpkg=./...
+
 #test-integration:
 #	GO111MODULE=on $(MAKE) -C cmd/_integration-tests
 
