@@ -74,8 +74,12 @@ jobs:
           #          fail_ci_if_error: true
       - name: Convert coverage to lcov
         uses: jandelgado/gcov2lcov-action@v1.0.8
+        run: |
+          cd go/src/github.com/ben1009/truss
       - name: Coveralls
         uses: coverallsapp/github-action@v1.1.2
+        run: |
+          cd go/src/github.com/ben1009/truss
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: coverage.lcov
