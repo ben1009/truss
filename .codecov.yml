@@ -24,7 +24,7 @@ parsers:
       macro: no
 
 fixes:
-  - "go/src/github.com/ben1009/truss::/"  # move path   e.g., "before/path" => "after/path"
+  - "go/src/github.com/ben1009/truss::"  # move path   e.g., "before/path" => "after/path"
 
 comment:
   layout: "header, diff"
