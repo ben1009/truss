@@ -80,4 +80,4 @@ jobs:
         uses: coverallsapp/github-action@v1.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: go/src/github.com/ben1009/truss
+          path-to-lcov: go/src/github.com/ben1009/truss/coverage.lcov
