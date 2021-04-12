@@ -44,6 +44,7 @@ var (
 )
 
 func init() {
+
 	// If Version or VersionDate are not set, truss was not built with make
 	if version == "" || date == "" {
 		rebuild := promptNoMake()
