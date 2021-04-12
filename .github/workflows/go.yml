@@ -73,6 +73,6 @@ jobs:
           #          name: codecov-unittests
           #          fail_ci_if_error: true
       - name: Coveralls
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v1.1.2
         with:
-          github-token: ${{ mzedRBO8N1woJcqUvWtfsz7Zxxeh2xzIn }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
