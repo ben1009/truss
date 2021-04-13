@@ -1,6 +1,7 @@
 # Truss 
 ![Build Status](https://github.com/ben1009/truss/workflows/Go/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/ben1009/truss/branch/master/graph/badge.svg)](https://codecov.io/gh/ben1009/truss)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ben1009/truss)](https://goreportcard.com/report/github.com/ben1009/truss)
 
 Truss handles the painful parts of services, freeing you to focus on the
 business logic.
