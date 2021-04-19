@@ -71,7 +71,7 @@ In your terminal, go to the root folder run `truss -c --servicename serviceName`
 .
 ├── echoservice
 |   ├── client
-|   │   ├── gprc
+|   │   ├── grpc
 |   │   └── http
 |   ├── cmd
 |   │   └── server
