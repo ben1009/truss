@@ -104,22 +104,22 @@ You can safely modify only the files in handlers/. Changes to any other files wi
 Open `handlers/handlers.go` using your favorite editor. Find the Echo function stub. It should look like this:
 ```
 func (s echoService) Echo(ctx context.Context, in *pb.EchoRequest) (*pb.EchoResponse, error) {
-	var resp pb.EchoResponse
-	resp = pb.EchoResponse{
-	// Out:
-	}
-	return &resp, nil
+    var resp pb.EchoResponse
+    resp = pb.EchoResponse{
+    // Out:
+    }
+    return &resp, nil
 }
 ```
 Notice that the stub has created an empty `EchoResponse` structure and suggests that we should fill in the `Out` field (commented field). Let's do this! Remember that we defined EchoResponse.Out as a string in out echo.proto, or you can verify what the structures are by looking at the golang definitions in echo.pb.go. In the case of echo, let's say back what we heard.
 
 ```
 func (s echoService) Echo(ctx context.Context, in *pb.EchoRequest) (*pb.EchoResponse, error) {
-	var resp pb.EchoResponse
-	resp = pb.EchoResponse{
-	   Out: in.In,
-	}
-	return &resp, nil
+    var resp pb.EchoResponse
+    resp = pb.EchoResponse{
+    Out: in.In,
+    }
+    return &resp, nil
 }
 ```
 
